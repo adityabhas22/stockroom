@@ -1,0 +1,9 @@
+region              = "ap-south-1"
+name                = "stockroom"
+kubernetes_version  = "1.34"
+admin_principal_arn = "arn:aws:iam::123456789012:role/StockroomOperator"
+api_allowed_cidrs   = ["203.0.113.10/32"]
+node_instance_type  = "t3.medium"
+# Enable after creating the GitHub repository and capstone environment.
+# github_repository = "owner/stockroom"
+# github_oidc_provider_arn = "arn:aws:iam::123456789012:oidc-provider/token.actions.githubusercontent.com"
