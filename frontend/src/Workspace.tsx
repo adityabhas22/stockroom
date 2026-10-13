@@ -264,7 +264,15 @@ export function Workspace({ logout }: { logout: () => void }) {
           <section className="inventory-panel">
             <div className="panel-heading">
               <div>
-                <h2>{view === 'inventory' ? 'All inventory' : 'Stock movements'}</h2>
+                <h2>
+                  {view === 'movements'
+                    ? 'Stock movements'
+                    : filter === 'low'
+                      ? 'Low stock'
+                      : filter === 'out'
+                        ? 'Out of stock'
+                        : 'All inventory'}
+                </h2>
                 <span>
                   {view === 'inventory'
                     ? 'Keep the shelves accounted for.'

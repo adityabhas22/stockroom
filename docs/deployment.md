@@ -60,14 +60,14 @@ Unlike kind, EKS does not use `--kubelet-insecure-tls`.
 
 The initial AWS access path uses a local port-forward to Traefik. It creates no public load balancer and needs no AWS Load Balancer Controller. A publicly reachable service would additionally need a controller-managed load balancer, DNS, and a trusted TLS certificate.
 
-Create a TLS Secret for the hostname chosen for the application, using an existing certificate and key:
+For a deployment with TLS, create a Secret for the chosen hostname using an existing certificate and key:
 
 ```sh
 kubectl -n stockroom create secret tls stockroom-tls \
   --cert=/path/to/certificate.pem --key=/path/to/private-key.pem
 ```
 
-For a private demonstration, a locally generated development certificate is possible, but the browser must trust its issuer. Never commit the private key.
+The private demonstration below uses HTTP over a loopback-only port-forward. It does not need a certificate or expose an application port to the internet.
 
 ## GitHub configuration
 
@@ -117,6 +117,23 @@ curl --resolve "$STOCKROOM_HOST:8443:127.0.0.1" "https://$STOCKROOM_HOST:8443/"
 ```
 
 Do not disable Secure cookies to work around a TLS problem on an exposed deployment.
+
+## Private demonstration
+
+For a temporary run without public DNS, use the demo override after the AWS values file:
+
+```sh
+helm upgrade --install stockroom helm/stockroom -n stockroom \
+  -f helm/stockroom/values-aws.yaml -f helm/stockroom/values-demo.yaml \
+  --set-string backend.image="$IMAGE_PATH/backend",backend.tag="$IMAGE_TAG" \
+  --set-string frontend.image="$IMAGE_PATH/frontend",frontend.tag="$IMAGE_TAG" \
+  --wait --wait-for-jobs --atomic --timeout 10m
+kubectl -n ingress-system port-forward --address 127.0.0.1 svc/traefik 8089:80
+```
+
+Open `http://stockroom.aws.localhost:8089`. The override disables Secure cookies only for this private HTTP demonstration. Keep the port-forward on loopback; exposed deployments use the TLS configuration above. The cluster API remains restricted to the administrator's configured IP address.
+
+EKS uses standard support. Kubernetes upgrades are required before that version's standard-support period ends; the configuration does not opt into paid extended support.
 
 ## Teardown
 

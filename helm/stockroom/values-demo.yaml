@@ -1,0 +1,6 @@
+# Use only with a ClusterIP ingress controller and a loopback port-forward.
+# Public deployments must use TLS and cookieSecure: true.
+cookieSecure: false
+ingress:
+  host: stockroom.aws.localhost
+  tls: []
