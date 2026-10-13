@@ -125,7 +125,7 @@ export function Workspace({ logout }: { logout: () => void }) {
       <aside className="sidebar">
         <a className="brand" href="/" aria-label="Stockroom home">
           <Box size={26} />
-          stockroom<span>®</span>
+          stockroom
         </a>
         <div className="workspace-label">
           <span className="workspace-avatar">S</span>
@@ -154,8 +154,9 @@ export function Workspace({ logout }: { logout: () => void }) {
         <div className="sidebar-note">
           <Package size={21} />
           <p>
-            A record for every receipt.
-            <br />A reason for every issue.
+            Stock changes are recorded
+            <br />
+            in the movement ledger.
           </p>
         </div>
         <button
@@ -356,7 +357,7 @@ export function Workspace({ logout }: { logout: () => void }) {
               </div>
             ) : (
               <div className="table-scroll">
-                <table>
+                <table className={view === 'inventory' ? 'inventory-table' : 'ledger-table'}>
                   <thead>
                     <tr>
                       {(view === 'inventory'
@@ -464,7 +465,7 @@ export function Workspace({ logout }: { logout: () => void }) {
           </section>
           <footer className="page-footer">
             <span>STOCKROOM</span>
-            <span>Good records. Fewer surprises.</span>
+            <span>Inventory & movement ledger</span>
           </footer>
         </main>
       </div>

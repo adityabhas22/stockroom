@@ -31,10 +31,11 @@ resource "aws_iam_role_policy" "deploy" {
   })
 }
 resource "aws_eks_access_entry" "deploy" {
-  count         = local.github_enabled ? 1 : 0
-  cluster_name  = aws_eks_cluster.main.name
-  principal_arn = aws_iam_role.deploy[0].arn
-  type          = "STANDARD"
+  count             = local.github_enabled ? 1 : 0
+  cluster_name      = aws_eks_cluster.main.name
+  principal_arn     = aws_iam_role.deploy[0].arn
+  type              = "STANDARD"
+  kubernetes_groups = ["stockroom-deploy"]
 }
 resource "aws_eks_access_policy_association" "deploy" {
   count         = local.github_enabled ? 1 : 0

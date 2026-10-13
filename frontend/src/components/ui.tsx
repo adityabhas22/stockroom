@@ -32,6 +32,7 @@ export function Modal({
   useEffect(() => {
     const el = ref.current!;
     el.showModal();
+    el.querySelector<HTMLInputElement>('input:not([type="hidden"])')?.focus();
     return () => el.close();
   }, []);
   return (

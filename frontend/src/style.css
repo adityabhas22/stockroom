@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
-
 :root {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans Variable', sans-serif;
   color: #242c27;
   background: #f5f5ef;
   font-synthesis: none;
@@ -475,6 +473,7 @@ label {
   padding: 2px;
 }
 .table-scroll {
+  position: relative;
   overflow-x: auto;
 }
 table {
@@ -814,7 +813,7 @@ dialog::backdrop {
   text-align: right;
 }
 .item-callout small {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans Variable', sans-serif;
   display: block;
   color: #8c977f;
   font-size: 10px;
@@ -877,7 +876,7 @@ dialog::backdrop {
   margin-top: 10px;
 }
 .detail-stock small {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans Variable', sans-serif;
   font-size: 12px;
   color: #89957b;
 }
@@ -1339,5 +1338,35 @@ dialog::backdrop {
   * {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .inventory-table th:nth-child(2),
+  .inventory-table th:nth-child(3),
+  .inventory-table td:nth-child(2),
+  .inventory-table td:nth-child(3) {
+    display: none;
+  }
+  .inventory-table td,
+  .inventory-table th {
+    padding: 14px 8px;
+  }
+  .inventory-table .item-icon,
+  .inventory-table .quantity > span {
+    display: none;
+  }
+  .inventory-table .item-link strong {
+    display: block;
+    max-width: 130px;
+    white-space: normal;
+    line-height: 1.4;
+  }
+  .inventory-table .badge {
+    font-size: 9px;
+  }
+  .inventory-table td:last-child,
+  .inventory-table th:last-child {
+    padding-right: 12px;
   }
 }

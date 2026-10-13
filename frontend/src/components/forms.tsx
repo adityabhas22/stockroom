@@ -37,7 +37,7 @@ export function Login({ onLogin }: { onLogin: () => void }) {
     <main className="login">
       <div className="login-story">
         <div className="brand">
-          <Box /> stockroom<span>®</span>
+          <Box /> stockroom
         </div>
         <div>
           <p className="eyebrow">A PLACE FOR EVERY PART</p>

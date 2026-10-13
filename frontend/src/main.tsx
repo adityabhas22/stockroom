@@ -4,6 +4,9 @@ import { Box } from 'lucide-react';
 import { api, ApiError, errorMessage } from './api';
 import { Workspace } from './Workspace';
 import { Login } from './components/forms';
+import '@fontsource-variable/dm-sans/index.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
 import './style.css';
 
 function App() {

@@ -7,14 +7,14 @@ test('create, receive, issue, edit, and archive an item', async ({ page }) => {
     .getByLabel('Workspace password')
     .fill(process.env.OPERATOR_PASSWORD || 'stockroom-local');
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Inventory', exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Inventory.', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Add item', exact: true }).click();
   await page.getByLabel('Item name').fill('Browser test caliper');
   await page.getByLabel('SKU', { exact: true }).fill(sku);
   await page.getByLabel('Category', { exact: true }).fill('Tools');
   await page.getByLabel('Shelf location').fill('T-01');
   await page.getByRole('button', { name: 'Create item' }).click();
-  await page.getByRole('searchbox').count();
+  await expect(page.getByRole('dialog')).not.toBeVisible();
   await page.getByLabel('Search inventory').fill(sku);
   const row = page.getByRole('row').filter({ hasText: sku });
   await expect(row).toBeVisible();
@@ -52,7 +52,8 @@ test('mobile layout, keyboard dialog dismissal, and session expiry', async ({ pa
     .getByLabel('Workspace password')
     .fill(process.env.OPERATOR_PASSWORD || 'stockroom-local');
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Inventory', exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Inventory.', exact: true })).toBeVisible();
+  await expect(page.getByRole('status')).not.toBeVisible();
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
   ).toBeTruthy();
