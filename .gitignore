@@ -19,3 +19,4 @@ terraform.tfvars
 *.pem
 evidence/private/
 .DS_Store
+*.tsbuildinfo

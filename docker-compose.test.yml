@@ -1,0 +1,15 @@
+name: stockroom-tests
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: stockroom
+      POSTGRES_PASSWORD: stockroom
+      POSTGRES_DB: stockroom_test
+    ports: [127.0.0.1:55432:5432]
+    tmpfs: [/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U stockroom -d stockroom_test]
+      interval: 3s
+      timeout: 3s
+      retries: 20
