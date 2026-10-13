@@ -1,0 +1,192 @@
+name: Test, scan, publish, deploy
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: stockroom-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: stockroom
+          POSTGRES_PASSWORD: stockroom
+          POSTGRES_DB: stockroom_test
+        ports: [55432:5432]
+        options: >-
+          --health-cmd "pg_isready -U stockroom -d stockroom_test"
+          --health-interval 3s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgresql+psycopg://stockroom:stockroom@localhost:55432/stockroom_test
+      TEST_DATABASE_URL: postgresql+psycopg://stockroom:stockroom@localhost:55432/stockroom_test
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: {python-version: '3.12', cache: pip, cache-dependency-path: backend/requirements-dev.txt}
+      - run: pip install -r backend/requirements-dev.txt
+      - name: Check Python
+        working-directory: backend
+        run: |
+          ruff check app tests alembic
+          ruff format --check app tests alembic
+          alembic upgrade head
+          pytest -v --junitxml=pytest.xml
+          alembic check
+          alembic downgrade base
+          alembic upgrade head
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: {node-version: '22', cache: npm, cache-dependency-path: frontend/package-lock.json}
+      - name: Build frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          npx prettier --check src tests
+          npm run build
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with: {name: pytest-results, path: backend/pytest.xml}
+
+  infrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: azure/setup-helm@b9e51907a09c216f16ebe8536097933489208112 # v4.3.0
+        with: {version: v3.17.3}
+      - run: |
+          helm lint helm/stockroom
+          helm template stockroom helm/stockroom -f helm/stockroom/values-local.yaml > /tmp/stockroom.yaml
+          cmp frontend/nginx.conf helm/stockroom/files/nginx.conf
+      - uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3
+        with: {terraform_version: 1.11.4}
+      - working-directory: terraform
+        run: |
+          terraform fmt -check -recursive
+          terraform init -backend=false -lockfile=readonly
+          terraform validate
+          terraform test
+
+  browser:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: {node-version: '22', cache: npm, cache-dependency-path: frontend/package-lock.json}
+      - run: docker compose up -d --build --wait
+      - working-directory: frontend
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with: {name: browser-results, path: frontend/playwright-report}
+      - if: failure()
+        run: docker compose logs --no-color
+      - if: always()
+        run: docker compose down -v
+
+  images:
+    needs: [test, infrastructure, browser]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set registry path
+        id: registry
+        env:
+          REPOSITORY: ${{ github.repository }}
+        run: echo "path=ghcr.io/${REPOSITORY,,}" >> "$GITHUB_OUTPUT"
+      - name: Build both images
+        env:
+          IMAGE_PATH: ${{ steps.registry.outputs.path }}
+        run: |
+          docker build --pull -t "$IMAGE_PATH/backend:$GITHUB_SHA" backend
+          docker build --pull -t "$IMAGE_PATH/frontend:$GITHUB_SHA" frontend
+      - name: Scan backend
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
+        with:
+          version: v0.75.0
+          image-ref: ${{ steps.registry.outputs.path }}/backend:${{ github.sha }}
+          severity: HIGH,CRITICAL
+          exit-code: '1'
+          format: table
+          output: backend-scan.txt
+      - name: Scan frontend
+        if: ${{ !cancelled() }}
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
+        with:
+          version: v0.75.0
+          image-ref: ${{ steps.registry.outputs.path }}/frontend:${{ github.sha }}
+          severity: HIGH,CRITICAL
+          exit-code: '1'
+          format: table
+          output: frontend-scan.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: security-scans
+          path: '*-scan.txt'
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        if: github.event_name != 'pull_request'
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish scanned images
+        if: github.event_name != 'pull_request'
+        env:
+          IMAGE_PATH: ${{ steps.registry.outputs.path }}
+        run: |
+          docker push "$IMAGE_PATH/backend:$GITHUB_SHA"
+          docker push "$IMAGE_PATH/frontend:$GITHUB_SHA"
+
+  deploy:
+    needs: images
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: [self-hosted, linux, stockroom-deploy]
+    environment: capstone
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - uses: azure/setup-helm@b9e51907a09c216f16ebe8536097933489208112 # v4.3.0
+        with: {version: v3.17.3}
+      - name: Deploy the scanned revision
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          EKS_CLUSTER_NAME: ${{ vars.EKS_CLUSTER_NAME }}
+          STOCKROOM_HOST: ${{ vars.STOCKROOM_HOST }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          aws eks update-kubeconfig --name "$EKS_CLUSTER_NAME" --region "$AWS_REGION"
+          image_path="ghcr.io/${REPOSITORY,,}"
+          helm upgrade --install stockroom helm/stockroom -n stockroom \
+            -f helm/stockroom/values-aws.yaml \
+            --set-string backend.image="$image_path/backend",backend.tag="$GITHUB_SHA" \
+            --set-string frontend.image="$image_path/frontend",frontend.tag="$GITHUB_SHA" \
+            --set-string ingress.host="$STOCKROOM_HOST" \
+            --set-string 'ingress.tls[0].secretName=stockroom-tls' \
+            --set-string "ingress.tls[0].hosts[0]=$STOCKROOM_HOST" \
+            --wait --wait-for-jobs --atomic --timeout 10m
+          kubectl -n stockroom rollout status deployment/stockroom-backend
+          kubectl -n stockroom rollout status deployment/stockroom-frontend
