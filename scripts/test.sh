@@ -2,7 +2,8 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 docker compose -f docker-compose.test.yml up -d --wait
-trap 'docker compose -f docker-compose.test.yml down' EXIT
+test_compose="$PWD/docker-compose.test.yml"
+trap 'docker compose -f "$test_compose" down' EXIT
 export DATABASE_URL=postgresql+psycopg://stockroom:stockroom@localhost:55432/stockroom_test
 export TEST_DATABASE_URL="$DATABASE_URL"
 cd backend

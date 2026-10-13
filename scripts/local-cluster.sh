@@ -9,9 +9,10 @@ export KUBECONFIG
 KUBECONFIG=$(mktemp)
 trap 'rm -f "$KUBECONFIG"' EXIT
 kind get kubeconfig --name stockroom > "$KUBECONFIG"
-docker build -t stockroom-backend:local backend
-docker build -t stockroom-frontend:local frontend
-kind load docker-image --name stockroom stockroom-backend:local stockroom-frontend:local
+image_tag="local-$(date +%Y%m%d%H%M%S)"
+docker build -t "stockroom-backend:$image_tag" backend
+docker build -t "stockroom-frontend:$image_tag" frontend
+kind load docker-image --name stockroom "stockroom-backend:$image_tag" "stockroom-frontend:$image_tag"
 helm repo add traefik https://traefik.github.io/charts --force-update
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/ --force-update
 helm repo update
@@ -22,6 +23,7 @@ helm upgrade --install metrics-server metrics-server/metrics-server --version 3.
 kubectl apply -f k8s/namespace.yaml
 OPERATOR_PASSWORD="${OPERATOR_PASSWORD:-stockroom-local}" scripts/create-secret.sh
 helm upgrade --install stockroom helm/stockroom -n stockroom -f helm/stockroom/values-local.yaml \
+  --set-string backend.tag="$image_tag",frontend.tag="$image_tag" \
   --wait --wait-for-jobs --timeout 5m
 kubectl -n stockroom get pods,svc,hpa
 echo "Open http://stockroom.localhost:8088 (or curl -H 'Host: stockroom.localhost' http://localhost:8088)."
