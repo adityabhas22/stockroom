@@ -1,0 +1,55 @@
+{
+  "conclusion": "success",
+  "headSha": "4d66ca00d4761cadb2d98108edf9d2469f097b0b",
+  "jobs": [
+    {
+      "name": "infrastructure",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/adityabhas22/stockroom/actions/runs/38426641286/job/115398203287"
+    },
+    {
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/adityabhas22/stockroom/actions/runs/38426641286/job/115398203527"
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/adityabhas22/stockroom/actions/runs/38426641286/job/115398563973"
+    },
+    {
+      "name": "images",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/adityabhas22/stockroom/actions/runs/38426641286/job/115399349206"
+    },
+    {
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/adityabhas22/stockroom/actions/runs/38426641286/job/115400124104"
+    }
+  ],
+  "startedAt": "2026-10-13T15:58:38Z",
+  "updatedAt": "2026-10-13T16:03:36Z",
+  "url": "https://github.com/adityabhas22/stockroom/actions/runs/38426641286",
+  "images": [
+    {
+      "image": "ghcr.io/adityabhas22/stockroom/backend:4d66ca00d4761cadb2d98108edf9d2469f097b0b",
+      "digest": "sha256:a20860f0cb3f74a2f867f5e701301890b3a79b2c6170e4e5f681d86165e096be",
+      "anonymous_manifest_and_layers": true,
+      "high_critical_findings": 0,
+      "platform": "linux/amd64"
+    },
+    {
+      "image": "ghcr.io/adityabhas22/stockroom/frontend:4d66ca00d4761cadb2d98108edf9d2469f097b0b",
+      "digest": "sha256:3c753291656090abf01bc48302ad29f050e6d2e5283692e3f81f86c76b334013",
+      "anonymous_manifest_and_layers": true,
+      "high_critical_findings": 0,
+      "platform": "linux/amd64"
+    }
+  ]
+}

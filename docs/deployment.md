@@ -73,7 +73,7 @@ For a private demonstration, a locally generated development certificate is poss
 
 The workflow runs on pull requests and pushes to `main`. Tests, frontend compilation, infrastructure checks, and browser tests must pass before image building. Both images are scanned for HIGH and CRITICAL vulnerabilities. Only after both scans succeed are those exact images pushed to GHCR. No `latest` tag is used.
 
-Commit the source to a GitHub repository, push `main`, and enable package access appropriate for the cluster. The chart assumes public GHCR packages. For private packages, create an image-pull Secret and set `imagePullSecrets` in a private values file or the deployment command.
+The repository is [adityabhas22/stockroom](https://github.com/adityabhas22/stockroom). Its backend and frontend GHCR images are publicly pullable. Pushes to `main` publish a new commit-SHA tag after validation. The chart assumes public GHCR packages. For private packages, create an image-pull Secret and set `imagePullSecrets` in a private values file or the deployment command.
 
 Create the GitHub environment `capstone` and restrict it to the `main` branch. Configure these repository or environment variables:
 

@@ -43,12 +43,24 @@ The Grafana capture contains application traffic, latency, CPU, and the increase
 
 ![Prometheus application targets](images/prometheus.png)
 
+## GitHub delivery
+
+[Workflow run 38426641286](https://github.com/adityabhas22/stockroom/actions/runs/38426641286) passed on GitHub-hosted Linux runners on 13 October 2026 for commit `4d66ca00d4761cadb2d98108edf9d2469f097b0b`.
+
+- All 21 PostgreSQL API tests and all 3 Chromium tests passed.
+- Frontend compilation, formatting, Helm validation, and Terraform validation and mocked planning passed.
+- Both Linux AMD64 images passed Trivy with zero HIGH or CRITICAL findings and were pushed with the full commit SHA as their tag.
+- Anonymous access to both image manifests and every image layer was verified.
+- The optional AWS deployment job was skipped because deployment is disabled.
+
+The first run found a Terraform lock-file portability issue. Adding the Linux provider checksum resolved it while retaining checksum verification.
+
+[Run and image digests](evidence/github-run.json) · [Pytest results](evidence/github-pytest.xml) · [Backend scan](evidence/github-backend-scan.txt) · [Frontend scan](evidence/github-frontend-scan.txt)
+
 ## Not executed
 
-- Publishing this repository to GitHub and running the workflow on GitHub-hosted infrastructure.
-- Publishing the application images to GHCR.
 - An authenticated AWS Terraform plan, apply, or destroy.
 - Deploying to EKS through the OIDC deployment job.
 - External TLS, public DNS, and public load-balancer access.
 
-The configuration and commands for those steps are in [deployment.md](deployment.md). Terraform's mocked test evaluates the resource configuration; it does not contact AWS or prove account permissions, regional capacity, or successful teardown. Local Trivy results do not substitute for a future CI scan because vulnerability databases and base-package updates change over time.
+The configuration and commands for those steps are in [deployment.md](deployment.md). Terraform's mocked test evaluates the resource configuration; it does not contact AWS or prove account permissions, regional capacity, or successful teardown. Scan results apply to the recorded images and vulnerability database at the time of each run.
