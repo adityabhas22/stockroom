@@ -28,6 +28,8 @@ def require_session(request: Request):
 
 def require_csrf(request: Request):
     # A cross-origin HTML form cannot set this header. No CORS origins are enabled.
-    if request.method not in {"GET", "HEAD", "OPTIONS"}:
-        if request.headers.get("X-Stockroom-Request") != "1":
-            raise HTTPException(403, "Missing request header")
+    if (
+        request.method not in {"GET", "HEAD", "OPTIONS"}
+        and request.headers.get("X-Stockroom-Request") != "1"
+    ):
+        raise HTTPException(403, "Missing request header")

@@ -16,8 +16,15 @@ from .models import Item, Movement
 from .schemas import ItemInput, ItemOut, ItemUpdate, LoginInput, MovementInput, MovementOut
 
 log = logging.getLogger("stockroom")
-REQUESTS = Counter("stockroom_http_requests_total", "Completed HTTP requests", ["method", "route", "status"])
-LATENCY = Histogram("stockroom_http_request_duration_seconds", "Request duration", ["method", "route"], buckets=(.005, .01, .025, .05, .1, .25, .5, 1, 2, 5))
+REQUESTS = Counter(
+    "stockroom_http_requests_total", "Completed HTTP requests", ["method", "route", "status"]
+)
+LATENCY = Histogram(
+    "stockroom_http_request_duration_seconds",
+    "Request duration",
+    ["method", "route"],
+    buckets=(0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2, 5),
+)
 
 
 @asynccontextmanager
@@ -28,7 +35,9 @@ async def lifespan(app):
     yield
 
 
-app = FastAPI(title="Stockroom API", version="1.0.0", lifespan=lifespan, dependencies=[Depends(require_csrf)])
+app = FastAPI(
+    title="Stockroom API", version="1.0.0", lifespan=lifespan, dependencies=[Depends(require_csrf)]
+)
 
 
 @app.middleware("http")
@@ -72,9 +81,15 @@ def metrics():
 def login(data: LoginInput, response: Response):
     if not verify_password(data.password):
         raise HTTPException(401, "Incorrect workspace password")
-    response.set_cookie("session", serializer().dumps({"role": "operator"}), httponly=True,
-                        secure=os.environ.get("COOKIE_SECURE", "true").lower() == "true",
-                        samesite="strict", max_age=28800, path="/")
+    response.set_cookie(
+        "session",
+        serializer().dumps({"role": "operator"}),
+        httponly=True,
+        secure=os.environ.get("COOKIE_SECURE", "true").lower() == "true",
+        samesite="strict",
+        max_age=28800,
+        path="/",
+    )
     return {"role": "operator"}
 
 
@@ -108,12 +123,20 @@ def commit(db):
 
 
 @app.get("/api/items", dependencies=auth)
-def list_items(q: str = Query("", max_length=120), status: Literal["all", "low", "out"] = "all",
-               offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: Session = Depends(get_db)):
+def list_items(
+    q: str = Query("", max_length=120),
+    status: Literal["all", "low", "out"] = "all",
+    offset: int = Query(0, ge=0),
+    limit: int = Query(30, ge=1, le=100),
+    db: Session = Depends(get_db),
+):
     stmt = select(Item).where(Item.archived.is_(False))
     if q.strip():
         escaped = q.strip().replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
-        stmt = stmt.where(Item.name.ilike(f"%{escaped}%", escape="\\") | Item.sku.ilike(f"%{escaped}%", escape="\\"))
+        stmt = stmt.where(
+            Item.name.ilike(f"%{escaped}%", escape="\\")
+            | Item.sku.ilike(f"%{escaped}%", escape="\\")
+        )
     if status == "low":
         stmt = stmt.where(Item.quantity <= Item.reorder_point, Item.quantity > 0)
     if status == "out":
@@ -125,11 +148,16 @@ def list_items(q: str = Query("", max_length=120), status: Literal["all", "low",
 
 @app.get("/api/summary", dependencies=auth)
 def summary(db: Session = Depends(get_db)):
-    total, units, low, out = db.execute(select(
-        func.count(Item.id), func.coalesce(func.sum(Item.quantity), 0),
-        func.sum(case(((Item.quantity <= Item.reorder_point) & (Item.quantity > 0), 1), else_=0)),
-        func.sum(case((Item.quantity == 0, 1), else_=0)),
-    ).where(Item.archived.is_(False))).one()
+    total, units, low, out = db.execute(
+        select(
+            func.count(Item.id),
+            func.coalesce(func.sum(Item.quantity), 0),
+            func.sum(
+                case(((Item.quantity <= Item.reorder_point) & (Item.quantity > 0), 1), else_=0)
+            ),
+            func.sum(case((Item.quantity == 0, 1), else_=0)),
+        ).where(Item.archived.is_(False))
+    ).one()
     return {"items": total, "units": units, "low": low or 0, "out": out or 0}
 
 
@@ -169,8 +197,12 @@ def archive_item(item_id: int, db: Session = Depends(get_db)):
     commit(db)
 
 
-@app.post("/api/items/{item_id}/movements", response_model=MovementOut, status_code=201, dependencies=auth)
-def move_stock(item_id: int, data: MovementInput, response: Response, db: Session = Depends(get_db)):
+@app.post(
+    "/api/items/{item_id}/movements", response_model=MovementOut, status_code=201, dependencies=auth
+)
+def move_stock(
+    item_id: int, data: MovementInput, response: Response, db: Session = Depends(get_db)
+):
     item = find_item(db, item_id, lock=True)
     previous = db.scalar(select(Movement).where(Movement.request_id == str(data.request_id)))
     if previous:
@@ -185,8 +217,13 @@ def move_stock(item_id: int, data: MovementInput, response: Response, db: Sessio
         raise HTTPException(409, "Stock limit exceeded")
     item.quantity = balance
     item.version += 1
-    movement = Movement(item_id=item_id, request_id=str(data.request_id), delta=data.delta,
-                        balance=balance, note=data.note)
+    movement = Movement(
+        item_id=item_id,
+        request_id=str(data.request_id),
+        delta=data.delta,
+        balance=balance,
+        note=data.note,
+    )
     db.add(movement)
     commit(db)
     db.refresh(movement)
@@ -194,11 +231,21 @@ def move_stock(item_id: int, data: MovementInput, response: Response, db: Sessio
 
 
 @app.get("/api/movements", dependencies=auth)
-def movements(item_id: int | None = None, limit: int = Query(30, ge=1, le=100),
-              offset: int = Query(0, ge=0), db: Session = Depends(get_db)):
+def movements(
+    item_id: int | None = None,
+    limit: int = Query(30, ge=1, le=100),
+    offset: int = Query(0, ge=0),
+    db: Session = Depends(get_db),
+):
     stmt = select(Movement, Item.name, Item.sku).join(Item)
     if item_id is not None:
         stmt = stmt.where(Movement.item_id == item_id)
     count = db.scalar(select(func.count()).select_from(stmt.subquery()))
     rows = db.execute(stmt.order_by(Movement.id.desc()).offset(offset).limit(limit)).all()
-    return {"total": count, "items": [dict(MovementOut.model_validate(m).model_dump(), name=name, sku=sku) for m, name, sku in rows]}
+    return {
+        "total": count,
+        "items": [
+            dict(MovementOut.model_validate(m).model_dump(), name=name, sku=sku)
+            for m, name, sku in rows
+        ],
+    }
