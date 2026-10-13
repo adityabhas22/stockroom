@@ -1,0 +1,14 @@
+
+> stockroom-web@1.0.0 test:e2e
+> playwright test
+
+
+Running 3 tests using 1 worker
+
+(node:91122) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/inventory.spec.ts:3:1 › create, receive, issue, edit, and archive an item (3.1s)
+  ✓  2 [chromium] › tests/inventory.spec.ts:48:1 › mobile layout, keyboard dialog dismissal, and session expiry (340ms)
+  ✓  3 [chromium] › tests/inventory.spec.ts:69:1 › network failure has a retry path (262ms)
+
+  3 passed (4.7s)

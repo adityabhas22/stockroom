@@ -1,0 +1,14 @@
+[
+  {
+    "service": "stockroom-backend",
+    "pod": "stockroom-backend-84746ddc59-p22nb",
+    "health": "up",
+    "last_error": ""
+  },
+  {
+    "service": "stockroom-backend",
+    "pod": "stockroom-backend-84746ddc59-rdmpx",
+    "health": "up",
+    "last_error": ""
+  }
+]

@@ -1,0 +1,4 @@
+NAME                            IMAGE                      COMMAND                  SERVICE             CREATED          STATUS                   PORTS
+stockroom-frontend-1            stockroom-frontend:local   "/docker-entrypoint.…"   frontend            2 minutes ago    Up 2 minutes (healthy)   127.0.0.1:3000->8080/tcp
+stockroom-postgres-1            postgres:17-alpine         "docker-entrypoint.s…"   postgres            41 minutes ago   Up 2 minutes (healthy)   5432/tcp
+stockroom-stockroom-backend-1   stockroom-backend:local    "uvicorn app.main:ap…"   stockroom-backend   2 minutes ago    Up 2 minutes (healthy)   127.0.0.1:8000->8000/tcp

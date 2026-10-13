@@ -1,0 +1,12 @@
+ceca09d Bound database waits and make local test and image refresh repeatable
+0ea4477 Harden runtime images and refine keyboard and mobile interactions
+4c0f256 Gate SHA-tagged image publication on tests and both security scans
+5144265 Add isolated failure labs and database backup command
+2f44990 Add Prometheus scraping, alerts, Grafana panels, and bounded load generation
+60efe5c Define private EKS workers, VPC, storage identity, and scoped deployment access
+f063c9b Package replicas, persistent storage, ingress, and autoscaling with Helm
+05658a5 Exercise inventory workflows in desktop and mobile browsers
+841f4bf Containerize local stack with health checks and separate migrations
+9719fc3 Verify inventory invariants against PostgreSQL and isolate migration startup
+f9ab48a Build responsive inventory interface and stock movement forms
+5e6daae Implement inventory API with audited and serialized stock movements

@@ -1,0 +1,31 @@
+namespace/stockroom-lab created
+deployment.apps/broken-image created
+namespace/stockroom-lab unchanged
+deployment.apps/lab-web created
+service/lab-web created
+Waiting for deployment "lab-web" rollout to finish: 0 of 1 updated replicas are available...
+deployment "lab-web" successfully rolled out
+NAME                            READY   STATUS         RESTARTS   AGE
+broken-image-5b885c49c7-jw7fp   0/1     ErrImagePull   0          40s
+lab-web-66599f45df-lcpkk        1/1     Running        0          40s
+NAME            ADDRESSTYPE   PORTS     ENDPOINTS   AGE
+lab-web-g4tg4   IPv4          <unset>   <unset>     40s
+service/lab-web patched
+deployment.apps/broken-image image updated
+Waiting for deployment "broken-image" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "broken-image" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "broken-image" rollout to finish: 1 old replicas are pending termination...
+deployment "broken-image" successfully rolled out
+NAME                                READY   STATUS        RESTARTS   AGE
+pod/broken-image-5b885c49c7-jw7fp   0/1     Terminating   0          41s
+pod/broken-image-7b8dbc9b54-w789k   1/1     Running       0          1s
+pod/lab-web-66599f45df-lcpkk        1/1     Running       0          41s
+
+NAME                                           ADDRESSTYPE   PORTS   ENDPOINTS     AGE
+endpointslice.discovery.k8s.io/lab-web-g4tg4   IPv4          8080    10.244.0.28   41s
+NAME                                READY   STATUS    RESTARTS   AGE
+pod/broken-image-7b8dbc9b54-w789k   1/1     Running   0          2m23s
+pod/lab-web-66599f45df-lcpkk        1/1     Running   0          3m3s
+
+NAME                                           ADDRESSTYPE   PORTS   ENDPOINTS     AGE
+endpointslice.discovery.k8s.io/lab-web-g4tg4   IPv4          8080    10.244.0.28   3m3s

@@ -1,0 +1,7 @@
+ Container stockroom-postgres-1  Stopping
+ Container stockroom-postgres-1  Stopped
+health=200
+ready=503
+ Container stockroom-postgres-1  Starting
+ Container stockroom-postgres-1  Started
+After PostgreSQL restart: /ready=200

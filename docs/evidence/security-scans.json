@@ -1,0 +1,28 @@
+{
+  "scanner": "Trivy 0.75.0",
+  "severity_gate": [
+    "HIGH",
+    "CRITICAL"
+  ],
+  "date": "2026-10-13",
+  "images": [
+    {
+      "name": "backend",
+      "image_id": "sha256:1c872a900e53d241b9ff96873a5aa7552ab05f703dad3b08eeeb27c31a6f1508",
+      "os": {
+        "Family": "alpine",
+        "Name": "3.24.2"
+      },
+      "high_or_critical_findings": 0
+    },
+    {
+      "name": "frontend",
+      "image_id": "sha256:05b256120763e3d7a68e7c7cb80cca5d23e5641f7c3b87df19f6e56bc4a8cfd9",
+      "os": {
+        "Family": "alpine",
+        "Name": "3.24.2"
+      },
+      "high_or_critical_findings": 0
+    }
+  ]
+}

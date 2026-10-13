@@ -9,8 +9,8 @@ grafana:
       enabled: true
       searchNamespace: monitoring
   resources:
-    requests: {cpu: 50m, memory: 128Mi}
-    limits: {cpu: 300m, memory: 256Mi}
+    requests: {cpu: 100m, memory: 256Mi}
+    limits: {cpu: 500m, memory: 768Mi}
 prometheus:
   prometheusSpec:
     retention: 24h
