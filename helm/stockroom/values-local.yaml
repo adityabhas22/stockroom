@@ -1,0 +1,4 @@
+cookieSecure: false
+ingress:
+  enabled: true
+  host: stockroom.localhost

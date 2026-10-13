@@ -1,0 +1,15 @@
+{{- range $component := list "backend" "frontend" }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $.Release.Name }}-{{ $component }}
+  labels:
+    {{- include "stockroom.labels" $ | nindent 4 }}
+    component: {{ $component }}
+spec:
+  type: ClusterIP
+  selector: {app.kubernetes.io/instance: {{ $.Release.Name }}, component: {{ $component }}}
+  ports:
+    - {name: http, port: {{ ternary 8000 8080 (eq $component "backend") }}, targetPort: http}
+{{- end }}

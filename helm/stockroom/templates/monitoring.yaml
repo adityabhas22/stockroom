@@ -1,0 +1,31 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Release.Name }}
+  labels: {release: {{ .Values.monitoring.release }}}
+spec:
+  selector:
+    matchLabels: {app.kubernetes.io/instance: {{ .Release.Name }}, component: backend}
+  endpoints: [{port: http, path: /metrics, interval: 15s}]
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ .Release.Name }}
+  labels: {release: {{ .Values.monitoring.release }}}
+spec:
+  groups:
+    - name: stockroom
+      rules:
+        - alert: StockroomBackendUnavailable
+          expr: sum(up{namespace="{{ .Release.Namespace }}",service="{{ .Release.Name }}-backend"}) < 1 or absent(up{namespace="{{ .Release.Namespace }}",service="{{ .Release.Name }}-backend"})
+          for: 2m
+          labels: {severity: critical}
+          annotations: {summary: "Stockroom has no scrapeable backend", runbook_url: "docs/runbook.md#backend-unavailable"}
+        - alert: StockroomServerErrors
+          expr: sum(rate(stockroom_http_requests_total{namespace="{{ .Release.Namespace }}",status=~"5.."}[5m])) / clamp_min(sum(rate(stockroom_http_requests_total{namespace="{{ .Release.Namespace }}"}[5m])), 0.01) > 0.05
+          for: 5m
+          labels: {severity: warning}
+          annotations: {summary: "Stockroom server errors exceed 5 percent", runbook_url: "docs/runbook.md#server-errors"}
+{{- end }}

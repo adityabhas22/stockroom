@@ -1,0 +1,31 @@
+{{- if .Values.networkPolicy.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/instance: {{ .Release.Name }}}
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/instance: {{ .Release.Name }}}
+    - from:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: ingress-system}
+      ports: [{port: 8000, protocol: TCP}, {port: 8080, protocol: TCP}]
+    - from:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: monitoring}
+      ports: [{port: 8000, protocol: TCP}]
+  egress:
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/instance: {{ .Release.Name }}}
+      ports: [{port: 5432, protocol: TCP}, {port: 8000, protocol: TCP}]
+    - to:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: kube-system}
+      ports: [{port: 53, protocol: UDP}, {port: 53, protocol: TCP}]
+{{- end }}

@@ -1,0 +1,41 @@
+backend:
+  image: stockroom-backend
+  tag: local
+  replicas: 2
+  resources:
+    requests: {cpu: 100m, memory: 128Mi}
+    limits: {cpu: 500m, memory: 256Mi}
+frontend:
+  image: stockroom-frontend
+  tag: local
+  replicas: 2
+  resources:
+    requests: {cpu: 50m, memory: 32Mi}
+    limits: {cpu: 250m, memory: 64Mi}
+imagePullPolicy: IfNotPresent
+imagePullSecrets: []
+existingSecret: stockroom-secrets
+cookieSecure: true
+postgres:
+  image: postgres:17-alpine
+  storage: 2Gi
+  storageClass: ""
+  resources:
+    requests: {cpu: 100m, memory: 128Mi}
+    limits: {cpu: 500m, memory: 384Mi}
+ingress:
+  enabled: false
+  className: traefik
+  host: stockroom.localhost
+  annotations: {}
+  tls: []
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPU: 65
+monitoring:
+  enabled: false
+  release: monitoring
+networkPolicy:
+  enabled: false

@@ -1,0 +1,86 @@
+{{- range $component := list "backend" "frontend" }}
+{{- $config := index $.Values $component }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $.Release.Name }}-{{ $component }}
+  labels:
+    {{- include "stockroom.labels" $ | nindent 4 }}
+spec:
+  {{- if or (eq $component "frontend") (not $.Values.autoscaling.enabled) }}
+  replicas: {{ $config.replicas }}
+  {{- end }}
+  revisionHistoryLimit: 3
+  strategy:
+    rollingUpdate: {maxSurge: 1, maxUnavailable: 0}
+  selector:
+    matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name }}, component: {{ $component }}}
+  template:
+    metadata:
+      {{- if eq $component "frontend" }}
+      annotations:
+        checksum/nginx: {{ $.Files.Get "files/nginx.conf" | sha256sum }}
+      {{- end }}
+      labels:
+        {{- include "stockroom.labels" $ | nindent 8 }}
+        component: {{ $component }}
+    spec:
+      automountServiceAccountToken: false
+      {{- with $.Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: {{ ternary 10001 101 (eq $component "backend") }}
+        runAsGroup: {{ ternary 10001 101 (eq $component "backend") }}
+        fsGroup: {{ ternary 10001 101 (eq $component "backend") }}
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: {{ $component }}
+          image: {{ printf "%s:%s" $config.image $config.tag | quote }}
+          imagePullPolicy: {{ $.Values.imagePullPolicy }}
+          ports:
+            - {name: http, containerPort: {{ ternary 8000 8080 (eq $component "backend") }}}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          {{- if eq $component "backend" }}
+          envFrom:
+            - secretRef: {name: {{ $.Values.existingSecret }}}
+          env:
+            - {name: COOKIE_SECURE, value: {{ $.Values.cookieSecure | quote }}}
+            - {name: APP_VERSION, value: {{ $config.tag | quote }}}
+          startupProbe:
+            httpGet: {path: /health, port: http}
+            failureThreshold: 30
+            periodSeconds: 3
+          readinessProbe:
+            httpGet: {path: /ready, port: http}
+            periodSeconds: 5
+            timeoutSeconds: 3
+          livenessProbe:
+            httpGet: {path: /health, port: http}
+            periodSeconds: 10
+          {{- else }}
+          readinessProbe:
+            httpGet: {path: /healthz, port: http}
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: {path: /healthz, port: http}
+            periodSeconds: 10
+          {{- end }}
+          resources: {{ toYaml $config.resources | nindent 12 }}
+          volumeMounts:
+            - {name: tmp, mountPath: /tmp}
+            {{- if eq $component "frontend" }}
+            - {name: nginx-config, mountPath: /etc/nginx/conf.d/default.conf, subPath: default.conf}
+            {{- end }}
+      volumes:
+        - {name: tmp, emptyDir: {sizeLimit: 64Mi}}
+        {{- if eq $component "frontend" }}
+        - name: nginx-config
+          configMap: {name: {{ $.Release.Name }}-nginx}
+        {{- end }}
+{{- end }}

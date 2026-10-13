@@ -1,0 +1,11 @@
+{{- range $component := list "backend" "frontend" }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ $.Release.Name }}-{{ $component }}
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name }}, component: {{ $component }}}
+{{- end }}

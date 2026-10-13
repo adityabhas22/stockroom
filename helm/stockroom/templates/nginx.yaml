@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-nginx
+data:
+  default.conf: |
+    {{- .Files.Get "files/nginx.conf" | replace "stockroom-backend" (printf "%s-backend" .Release.Name) | nindent 4 }}

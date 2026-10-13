@@ -1,0 +1,11 @@
+postgres:
+  storage: 10Gi
+  storageClass: stockroom-gp3
+cookieSecure: true
+networkPolicy:
+  enabled: true
+monitoring:
+  enabled: true
+# Supply ingress.host and ingress.tls for the chosen DNS name at deployment.
+ingress:
+  enabled: true
