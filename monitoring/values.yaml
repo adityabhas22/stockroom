@@ -1,0 +1,37 @@
+grafana:
+  admin:
+    existingSecret: grafana-admin
+    userKey: admin-user
+    passwordKey: admin-password
+  defaultDashboardsEnabled: false
+  sidecar:
+    dashboards:
+      enabled: true
+      searchNamespace: monitoring
+  resources:
+    requests: {cpu: 50m, memory: 128Mi}
+    limits: {cpu: 300m, memory: 256Mi}
+prometheus:
+  prometheusSpec:
+    retention: 24h
+    retentionSize: 1GB
+    resources:
+      requests: {cpu: 100m, memory: 256Mi}
+      limits: {cpu: 500m, memory: 768Mi}
+    serviceMonitorSelector:
+      matchLabels: {release: monitoring}
+    ruleSelector:
+      matchLabels: {release: monitoring}
+alertmanager:
+  enabled: true
+  alertmanagerSpec:
+    resources:
+      requests: {cpu: 20m, memory: 64Mi}
+      limits: {cpu: 100m, memory: 128Mi}
+kubeControllerManager:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeEtcd:
+  enabled: false
+# EKS does not expose these managed control-plane targets. The same values work on kind.
