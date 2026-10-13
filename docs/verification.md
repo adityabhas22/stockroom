@@ -57,10 +57,13 @@ The first run found a Terraform lock-file portability issue. Adding the Linux pr
 
 [Run and image digests](evidence/github-run.json) · [Pytest results](evidence/github-pytest.xml) · [Backend scan](evidence/github-backend-scan.txt) · [Frontend scan](evidence/github-frontend-scan.txt)
 
+## AWS execution
+
+The application also ran on a temporary EKS cluster in Mumbai on 13 October 2026. The [AWS execution record](aws-run.md) includes infrastructure, application, rollout, load, persistence, recovery, and teardown evidence.
+
 ## Not executed
 
-- An authenticated AWS Terraform plan, apply, or destroy.
 - Deploying to EKS through the OIDC deployment job.
 - External TLS, public DNS, and public load-balancer access.
 
-The configuration and commands for those steps are in [deployment.md](deployment.md). Terraform's mocked test evaluates the resource configuration; it does not contact AWS or prove account permissions, regional capacity, or successful teardown. Scan results apply to the recorded images and vulnerability database at the time of each run.
+The configuration and commands for those steps are in [deployment.md](deployment.md). The AWS run used a manual Helm upgrade of the images published by GitHub Actions. Scan results apply to the recorded images and vulnerability database at the time of each run.

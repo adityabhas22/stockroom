@@ -1,0 +1,251 @@
+data.aws_availability_zones.available: Reading...
+aws_iam_role.cluster: Refreshing state... [id=stockroom-cluster]
+aws_cloudwatch_log_group.cluster: Refreshing state... [id=/aws/eks/stockroom/cluster]
+aws_eip.nat: Refreshing state... [id=eipalloc-03b3340a378905da2]
+aws_iam_role.nodes: Refreshing state... [id=stockroom-nodes]
+aws_vpc.main: Refreshing state... [id=vpc-006af22828d9c177d]
+aws_iam_role.ebs: Refreshing state... [id=stockroom-ebs-csi]
+aws_launch_template.nodes: Refreshing state... [id=lt-0b10b0eff27b9288e]
+data.aws_availability_zones.available: Read complete after 1s [id=ap-south-1]
+aws_internet_gateway.main: Refreshing state... [id=igw-0178c50925b9ebad5]
+aws_subnet.private[1]: Refreshing state... [id=subnet-0b5daf54d2eea8bd1]
+aws_subnet.public[0]: Refreshing state... [id=subnet-040c8045842984d12]
+aws_subnet.public[1]: Refreshing state... [id=subnet-07c13b752cfd057da]
+aws_subnet.private[0]: Refreshing state... [id=subnet-0697b9279c9e412d7]
+aws_route_table.public: Refreshing state... [id=rtb-08805b61b34214065]
+aws_nat_gateway.main: Refreshing state... [id=nat-0a835d5da889fd34d]
+aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0730dc5ca35aa3ad4]
+aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-010064b753c93b358]
+aws_route_table.private: Refreshing state... [id=rtb-0f5ccd79cfad27c1b]
+aws_route_table_association.private[0]: Refreshing state... [id=rtbassoc-0f529359f418d5717]
+aws_route_table_association.private[1]: Refreshing state... [id=rtbassoc-0d963ebb50b1db716]
+aws_iam_role_policy_attachment.ebs: Refreshing state... [id=stockroom-ebs-csi/arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy]
+aws_iam_role_policy_attachment.cluster: Refreshing state... [id=stockroom-cluster/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
+aws_iam_role_policy_attachment.nodes["AmazonEKSWorkerNodePolicy"]: Refreshing state... [id=stockroom-nodes/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy]
+aws_iam_role_policy_attachment.nodes["AmazonEC2ContainerRegistryReadOnly"]: Refreshing state... [id=stockroom-nodes/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly]
+aws_iam_role_policy_attachment.nodes["AmazonEKS_CNI_Policy"]: Refreshing state... [id=stockroom-nodes/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
+aws_eks_cluster.main: Refreshing state... [id=stockroom]
+aws_eks_access_entry.admin: Refreshing state... [id=stockroom:arn:aws:iam::025066245518:role/stockroom-operator]
+aws_eks_access_policy_association.admin: Refreshing state... [id=stockroom#arn:aws:iam::025066245518:role/stockroom-operator#arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_eks_addon.core["coredns"] will be created
+  + resource "aws_eks_addon" "core" {
+      + addon_name           = "coredns"
+      + addon_version        = (known after apply)
+      + arn                  = (known after apply)
+      + cluster_name         = "stockroom"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + region               = "ap-south-1"
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "stockroom"
+        }
+
+      + namespace_config (known after apply)
+    }
+
+  # aws_eks_addon.core["eks-pod-identity-agent"] will be created
+  + resource "aws_eks_addon" "core" {
+      + addon_name           = "eks-pod-identity-agent"
+      + addon_version        = (known after apply)
+      + arn                  = (known after apply)
+      + cluster_name         = "stockroom"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + region               = "ap-south-1"
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "stockroom"
+        }
+
+      + namespace_config (known after apply)
+    }
+
+  # aws_eks_addon.core["kube-proxy"] will be created
+  + resource "aws_eks_addon" "core" {
+      + addon_name           = "kube-proxy"
+      + addon_version        = (known after apply)
+      + arn                  = (known after apply)
+      + cluster_name         = "stockroom"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + region               = "ap-south-1"
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "stockroom"
+        }
+
+      + namespace_config (known after apply)
+    }
+
+  # aws_eks_addon.core["vpc-cni"] will be created
+  + resource "aws_eks_addon" "core" {
+      + addon_name           = "vpc-cni"
+      + addon_version        = (known after apply)
+      + arn                  = (known after apply)
+      + cluster_name         = "stockroom"
+      + configuration_values = jsonencode(
+            {
+              + enableNetworkPolicy = "true"
+            }
+        )
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + region               = "ap-south-1"
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "stockroom"
+        }
+
+      + namespace_config (known after apply)
+    }
+
+  # aws_eks_addon.ebs will be created
+  + resource "aws_eks_addon" "ebs" {
+      + addon_name           = "aws-ebs-csi-driver"
+      + addon_version        = (known after apply)
+      + arn                  = (known after apply)
+      + cluster_name         = "stockroom"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + region               = "ap-south-1"
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "stockroom"
+        }
+
+      + namespace_config (known after apply)
+    }
+
+  # aws_eks_node_group.main will be created
+  + resource "aws_eks_node_group" "main" {
+      + ami_type               = "AL2023_x86_64_STANDARD"
+      + arn                    = (known after apply)
+      + capacity_type          = (known after apply)
+      + cluster_name           = "stockroom"
+      + disk_size              = (known after apply)
+      + id                     = (known after apply)
+      + instance_types         = [
+          + "t3.medium",
+        ]
+      + node_group_name        = "stockroom-workers"
+      + node_group_name_prefix = (known after apply)
+      + node_role_arn          = "arn:aws:iam::025066245518:role/stockroom-nodes"
+      + region                 = "ap-south-1"
+      + release_version        = (known after apply)
+      + resources              = (known after apply)
+      + status                 = (known after apply)
+      + subnet_ids             = [
+          + "subnet-0697b9279c9e412d7",
+          + "subnet-0b5daf54d2eea8bd1",
+        ]
+      + tags_all               = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "stockroom"
+        }
+      + version                = (known after apply)
+
+      + launch_template {
+          + id      = "lt-0b10b0eff27b9288e"
+          + name    = (known after apply)
+          + version = "1"
+        }
+
+      + node_repair_config (known after apply)
+
+      + scaling_config {
+          + desired_size = 2
+          + max_size     = 3
+          + min_size     = 2
+        }
+
+      + update_config {
+          + max_unavailable = 1
+        }
+    }
+
+  # aws_eks_pod_identity_association.ebs will be created
+  + resource "aws_eks_pod_identity_association" "ebs" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "stockroom"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "kube-system"
+      + region               = "ap-south-1"
+      + role_arn             = "arn:aws:iam::025066245518:role/stockroom-ebs-csi"
+      + service_account      = "ebs-csi-controller-sa"
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "stockroom"
+        }
+    }
+
+Plan: 7 to add, 0 to change, 0 to destroy.
+aws_eks_node_group.main: Creating...
+aws_eks_node_group.main: Still creating... [10s elapsed]
+aws_eks_node_group.main: Still creating... [20s elapsed]
+aws_eks_node_group.main: Still creating... [30s elapsed]
+aws_eks_node_group.main: Still creating... [40s elapsed]
+aws_eks_node_group.main: Still creating... [50s elapsed]
+aws_eks_node_group.main: Still creating... [1m0s elapsed]
+aws_eks_node_group.main: Still creating... [1m10s elapsed]
+aws_eks_node_group.main: Still creating... [1m20s elapsed]
+aws_eks_node_group.main: Still creating... [1m30s elapsed]
+aws_eks_node_group.main: Still creating... [1m40s elapsed]
+aws_eks_node_group.main: Creation complete after 1m48s [id=stockroom:stockroom-workers]
+aws_eks_addon.core["kube-proxy"]: Creating...
+aws_eks_addon.core["vpc-cni"]: Creating...
+aws_eks_addon.core["coredns"]: Creating...
+aws_eks_addon.core["eks-pod-identity-agent"]: Creating...
+aws_eks_addon.core["vpc-cni"]: Still creating... [10s elapsed]
+aws_eks_addon.core["coredns"]: Still creating... [10s elapsed]
+aws_eks_addon.core["kube-proxy"]: Still creating... [10s elapsed]
+aws_eks_addon.core["eks-pod-identity-agent"]: Still creating... [10s elapsed]
+aws_eks_addon.core["kube-proxy"]: Creation complete after 15s [id=stockroom:kube-proxy]
+aws_eks_addon.core["coredns"]: Creation complete after 15s [id=stockroom:coredns]
+aws_eks_addon.core["vpc-cni"]: Still creating... [20s elapsed]
+aws_eks_addon.core["eks-pod-identity-agent"]: Still creating... [20s elapsed]
+aws_eks_addon.core["vpc-cni"]: Creation complete after 25s [id=stockroom:vpc-cni]
+aws_eks_addon.core["eks-pod-identity-agent"]: Creation complete after 25s [id=stockroom:eks-pod-identity-agent]
+aws_eks_pod_identity_association.ebs: Creating...
+aws_eks_pod_identity_association.ebs: Creation complete after 1s [id=a-s7r2scfcmllhjcw41]
+aws_eks_addon.ebs: Creating...
+aws_eks_addon.ebs: Still creating... [10s elapsed]
+aws_eks_addon.ebs: Still creating... [20s elapsed]
+aws_eks_addon.ebs: Still creating... [30s elapsed]
+aws_eks_addon.ebs: Still creating... [40s elapsed]
+aws_eks_addon.ebs: Creation complete after 45s [id=stockroom:aws-ebs-csi-driver]
+
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+cluster_name = "stockroom"
+configure_kubectl = "aws eks update-kubeconfig --region ap-south-1 --name stockroom"
+private_subnet_ids = [
+  "subnet-0697b9279c9e412d7",
+  "subnet-0b5daf54d2eea8bd1",
+]
+public_subnet_ids = [
+  "subnet-040c8045842984d12",
+  "subnet-07c13b752cfd057da",
+]
+vpc_id = "vpc-006af22828d9c177d"

@@ -1,0 +1,27 @@
+Tue Oct 13 17:04:04 UTC 2026
+NAME                   UID
+stockroom-postgres-0   2158310d-c546-427f-848b-409554118959
+ items | units 
+-------+-------
+    13 |   154
+(1 row)
+
+ movements 
+-----------
+        12
+(1 row)
+
+pod "stockroom-postgres-0" deleted
+pod/stockroom-postgres-0 condition met
+NAME                   UID
+stockroom-postgres-0   091ac5c1-d0ee-4192-ac67-394f40ece13c
+ items | units 
+-------+-------
+    13 |   154
+(1 row)
+
+ movements 
+-----------
+        12
+(1 row)
+

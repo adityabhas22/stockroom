@@ -1,0 +1,9 @@
+{
+  "bootstrap_access_keys_deleted": 2,
+  "bootstrap_user_deleted": true,
+  "operator_role_deleted": true,
+  "deletion_verified": true,
+  "remaining_regional_ebs_volume_count": 0,
+  "temporary_cli_login_ended": true,
+  "task_profiles_and_credential_files_removed": true
+}

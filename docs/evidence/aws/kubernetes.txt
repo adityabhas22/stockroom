@@ -1,0 +1,27 @@
+Tue Oct 13 16:59:42 UTC 2026
+NAME                                          STATUS   ROLES    AGE    VERSION
+ip-10-42-10-143.ap-south-1.compute.internal   Ready    <none>   9m7s   v1.34.11-eks-3b4a6ca
+ip-10-42-11-168.ap-south-1.compute.internal   Ready    <none>   9m3s   v1.34.11-eks-3b4a6ca
+NAME                                  READY   STATUS      RESTARTS   AGE
+stockroom-backend-db8bf8b95-9mgr6     1/1     Running     0          89s
+stockroom-backend-db8bf8b95-ktcx6     1/1     Running     0          104s
+stockroom-frontend-74f786cb86-46kc4   1/1     Running     0          104s
+stockroom-frontend-74f786cb86-6wvcj   1/1     Running     0          104s
+stockroom-migrate-1-pmtt2             0/1     Completed   0          104s
+stockroom-postgres-0                  1/1     Running     0          104s
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/stockroom-backend    2/2     2            2           105s
+deployment.apps/stockroom-frontend   2/2     2            2           105s
+
+NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/stockroom-backend    ClusterIP   172.20.51.0      <none>        8000/TCP   105s
+service/stockroom-frontend   ClusterIP   172.20.145.145   <none>        8080/TCP   105s
+service/stockroom-postgres   ClusterIP   None             <none>        5432/TCP   105s
+
+NAME                                  CLASS     HOSTS                     ADDRESS   PORTS   AGE
+ingress.networking.k8s.io/stockroom   traefik   stockroom.aws.localhost             80      105s
+
+NAME                                              STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/data-stockroom-postgres-0   Bound    pvc-abb28ae9-ac71-428f-9b46-b147cc93fa1a   10Gi       RWO            stockroom-gp3   <unset>                 105s
+NAME     	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART          	APP VERSION
+stockroom	stockroom	1       	2026-10-13 22:27:57.901589 +0530 IST	deployed	stockroom-1.0.0	1.0.0      

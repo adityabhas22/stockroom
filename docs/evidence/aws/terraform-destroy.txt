@@ -1,0 +1,138 @@
+aws_route_table_association.public[0]: Destroying... [id=rtbassoc-0730dc5ca35aa3ad4]
+aws_route_table_association.public[1]: Destroying... [id=rtbassoc-010064b753c93b358]
+aws_eks_access_policy_association.admin: Destroying... [id=stockroom#arn:aws:iam::025066245518:role/stockroom-operator#arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy]
+aws_eks_addon.ebs: Destroying... [id=stockroom:aws-ebs-csi-driver]
+aws_route_table_association.public[1]: Destruction complete after 0s
+aws_eks_access_policy_association.admin: Destruction complete after 0s
+aws_route_table_association.public[0]: Destruction complete after 0s
+aws_eks_access_entry.admin: Destroying... [id=stockroom:arn:aws:iam::025066245518:role/stockroom-operator]
+aws_route_table.public: Destroying... [id=rtb-08805b61b34214065]
+aws_eks_access_entry.admin: Destruction complete after 1s
+aws_route_table.public: Destruction complete after 1s
+aws_eks_addon.ebs: Destruction complete after 7s
+aws_iam_role_policy_attachment.ebs: Destroying... [id=stockroom-ebs-csi/arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy]
+aws_eks_pod_identity_association.ebs: Destroying... [id=a-s7r2scfcmllhjcw41]
+aws_eks_pod_identity_association.ebs: Destruction complete after 1s
+aws_eks_addon.core["eks-pod-identity-agent"]: Destroying... [id=stockroom:eks-pod-identity-agent]
+aws_eks_addon.core["kube-proxy"]: Destroying... [id=stockroom:kube-proxy]
+aws_eks_addon.core["vpc-cni"]: Destroying... [id=stockroom:vpc-cni]
+aws_eks_addon.core["coredns"]: Destroying... [id=stockroom:coredns]
+aws_iam_role_policy_attachment.ebs: Destruction complete after 1s
+aws_iam_role.ebs: Destroying... [id=stockroom-ebs-csi]
+aws_eks_addon.core["vpc-cni"]: Destruction complete after 1s
+aws_eks_addon.core["eks-pod-identity-agent"]: Destruction complete after 1s
+aws_eks_addon.core["kube-proxy"]: Destruction complete after 1s
+aws_iam_role.ebs: Destruction complete after 1s
+aws_eks_addon.core["coredns"]: Destruction complete after 2s
+aws_eks_node_group.main: Destroying... [id=stockroom:stockroom-workers]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 10s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 20s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 30s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 40s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 50s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 1m0s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 1m10s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 1m20s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 1m30s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 1m40s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 1m50s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 2m0s elapsed]
+aws_eks_node_group.main: Still destroying... [id=stockroom:stockroom-workers, 2m10s elapsed]
+aws_eks_node_group.main: Destruction complete after 2m16s
+aws_iam_role_policy_attachment.nodes["AmazonEKSWorkerNodePolicy"]: Destroying... [id=stockroom-nodes/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy]
+aws_iam_role_policy_attachment.nodes["AmazonEC2ContainerRegistryReadOnly"]: Destroying... [id=stockroom-nodes/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly]
+aws_iam_role_policy_attachment.nodes["AmazonEKS_CNI_Policy"]: Destroying... [id=stockroom-nodes/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
+aws_route_table_association.private[1]: Destroying... [id=rtbassoc-0d963ebb50b1db716]
+aws_route_table_association.private[0]: Destroying... [id=rtbassoc-0f529359f418d5717]
+aws_launch_template.nodes: Destroying... [id=lt-0b10b0eff27b9288e]
+aws_eks_cluster.main: Destroying... [id=stockroom]
+aws_launch_template.nodes: Destruction complete after 0s
+aws_route_table_association.private[0]: Destruction complete after 0s
+aws_route_table_association.private[1]: Destruction complete after 0s
+aws_route_table.private: Destroying... [id=rtb-0f5ccd79cfad27c1b]
+aws_route_table.private: Destruction complete after 1s
+aws_nat_gateway.main: Destroying... [id=nat-0a835d5da889fd34d]
+aws_iam_role_policy_attachment.nodes["AmazonEKSWorkerNodePolicy"]: Destruction complete after 1s
+aws_iam_role_policy_attachment.nodes["AmazonEKS_CNI_Policy"]: Destruction complete after 1s
+aws_iam_role_policy_attachment.nodes["AmazonEC2ContainerRegistryReadOnly"]: Destruction complete after 1s
+aws_iam_role.nodes: Destroying... [id=stockroom-nodes]
+aws_iam_role.nodes: Destruction complete after 1s
+aws_eks_cluster.main: Still destroying... [id=stockroom, 10s elapsed]
+aws_nat_gateway.main: Still destroying... [id=nat-0a835d5da889fd34d, 10s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 20s elapsed]
+aws_nat_gateway.main: Still destroying... [id=nat-0a835d5da889fd34d, 20s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 30s elapsed]
+aws_nat_gateway.main: Still destroying... [id=nat-0a835d5da889fd34d, 30s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 40s elapsed]
+aws_nat_gateway.main: Still destroying... [id=nat-0a835d5da889fd34d, 40s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 50s elapsed]
+aws_nat_gateway.main: Still destroying... [id=nat-0a835d5da889fd34d, 50s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 1m0s elapsed]
+aws_nat_gateway.main: Still destroying... [id=nat-0a835d5da889fd34d, 1m0s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 1m10s elapsed]
+aws_nat_gateway.main: Still destroying... [id=nat-0a835d5da889fd34d, 1m10s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 1m20s elapsed]
+aws_nat_gateway.main: Still destroying... [id=nat-0a835d5da889fd34d, 1m20s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 1m30s elapsed]
+aws_nat_gateway.main: Still destroying... [id=nat-0a835d5da889fd34d, 1m30s elapsed]
+aws_nat_gateway.main: Destruction complete after 1m30s
+aws_eip.nat: Destroying... [id=eipalloc-03b3340a378905da2]
+aws_internet_gateway.main: Destroying... [id=igw-0178c50925b9ebad5]
+aws_subnet.public[1]: Destroying... [id=subnet-07c13b752cfd057da]
+aws_subnet.public[0]: Destroying... [id=subnet-040c8045842984d12]
+aws_subnet.public[0]: Destruction complete after 1s
+aws_subnet.public[1]: Destruction complete after 1s
+aws_internet_gateway.main: Destruction complete after 1s
+aws_eip.nat: Destruction complete after 1s
+aws_eks_cluster.main: Still destroying... [id=stockroom, 1m40s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 1m50s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 2m0s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 2m10s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 2m20s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 2m30s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 2m40s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 2m50s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 3m0s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 3m10s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 3m20s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 3m30s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 3m40s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 3m50s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 4m0s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 4m10s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 4m20s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 4m30s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 4m40s elapsed]
+aws_eks_cluster.main: Still destroying... [id=stockroom, 4m50s elapsed]
+aws_eks_cluster.main: Destruction complete after 4m55s
+aws_iam_role_policy_attachment.cluster: Destroying... [id=stockroom-cluster/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
+aws_subnet.private[0]: Destroying... [id=subnet-0697b9279c9e412d7]
+aws_cloudwatch_log_group.cluster: Destroying... [id=/aws/eks/stockroom/cluster]
+aws_subnet.private[1]: Destroying... [id=subnet-0b5daf54d2eea8bd1]
+aws_cloudwatch_log_group.cluster: Destruction complete after 0s
+aws_subnet.private[0]: Destruction complete after 0s
+aws_iam_role_policy_attachment.cluster: Destruction complete after 1s
+aws_iam_role.cluster: Destroying... [id=stockroom-cluster]
+aws_iam_role.cluster: Destruction complete after 1s
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 10s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 20s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 30s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 40s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 50s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 1m0s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 1m10s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 1m20s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 1m30s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 1m40s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 1m50s elapsed]
+aws_subnet.private[1]: Still destroying... [id=subnet-0b5daf54d2eea8bd1, 2m0s elapsed]
+aws_subnet.private[1]: Destruction complete after 2m1s
+aws_vpc.main: Destroying... [id=vpc-006af22828d9c177d]
+aws_vpc.main: Still destroying... [id=vpc-006af22828d9c177d, 10s elapsed]
+aws_vpc.main: Still destroying... [id=vpc-006af22828d9c177d, 20s elapsed]
+aws_vpc.main: Still destroying... [id=vpc-006af22828d9c177d, 30s elapsed]
+aws_vpc.main: Still destroying... [id=vpc-006af22828d9c177d, 40s elapsed]
+aws_vpc.main: Still destroying... [id=vpc-006af22828d9c177d, 50s elapsed]
+aws_vpc.main: Destruction complete after 50s
+
+Apply complete! Resources: 0 added, 0 changed, 34 destroyed.

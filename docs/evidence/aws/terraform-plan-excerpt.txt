@@ -1,0 +1,66 @@
+Stockroom · AWS Terraform plan
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + region                                         = "ap-south-1"
+      + tags                                           = {
+          + "Name"                   = "stockroom-public-2"
+          + "kubernetes.io/role/elb" = "1"
+        }
+      + tags_all                                       = {
+          + "ManagedBy"              = "terraform"
+          + "Name"                   = "stockroom-public-2"
+          + "Project"                = "stockroom"
+          + "kubernetes.io/role/elb" = "1"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_vpc.main will be created
+  + resource "aws_vpc" "main" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.42.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + region                               = "ap-south-1"
+      + tags                                 = {
+          + "Name" = "stockroom"
+        }
+      + tags_all                             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "stockroom"
+          + "Project"   = "stockroom"
+        }
+    }
+
+Plan: 34 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + cluster_name           = "stockroom"
+  + configure_kubectl      = "aws eks update-kubeconfig --region ap-south-1 --name stockroom"
+  + private_subnet_ids     = [
+      + (known after apply),
+      + (known after apply),
+    ]
+  + public_subnet_ids      = [
+      + (known after apply),
+      + (known after apply),
+    ]
+  + vpc_id                 = (known after apply)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: stockroom.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "stockroom.tfplan"

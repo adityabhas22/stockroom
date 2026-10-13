@@ -1,0 +1,6 @@
+NAME                            READY   STATUS        RESTARTS   AGE
+broken-image-5644cb94d7-fh5gp   1/1     Running       0          8s
+broken-image-69577d9c7b-gzbb9   0/1     Terminating   0          57s
+lab-web-546dfbf5f6-x55jv        1/1     Running       0          57s
+NAME            ADDRESSTYPE   PORTS   ENDPOINTS      AGE
+lab-web-5t4jp   IPv4          8080    10.42.10.185   56s

@@ -1,0 +1,124 @@
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 768.0
+python_gc_objects_collected_total{generation="1"} 947.0
+python_gc_objects_collected_total{generation="2"} 0.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 211.0
+python_gc_collections_total{generation="1"} 19.0
+python_gc_collections_total{generation="2"} 1.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="12",patchlevel="15",version="3.12.15"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 9.928704e+07
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 8.4992e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79191069483e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 3.44
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 12.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 65536.0
+# HELP stockroom_http_requests_total Completed HTTP requests
+# TYPE stockroom_http_requests_total counter
+stockroom_http_requests_total{method="GET",route="/api/items",status="200"} 7.0
+stockroom_http_requests_total{method="POST",route="/api/items/{item_id}/movements",status="201"} 5.0
+stockroom_http_requests_total{method="POST",route="/api/items",status="201"} 7.0
+stockroom_http_requests_total{method="GET",route="/api/session",status="401"} 1.0
+stockroom_http_requests_total{method="POST",route="/api/session",status="200"} 1.0
+# HELP stockroom_http_requests_created Completed HTTP requests
+# TYPE stockroom_http_requests_created gauge
+stockroom_http_requests_created{method="GET",route="/api/items",status="200"} 1.7919107502170699e+09
+stockroom_http_requests_created{method="POST",route="/api/items/{item_id}/movements",status="201"} 1.7919107505028687e+09
+stockroom_http_requests_created{method="POST",route="/api/items",status="201"} 1.7919107507542987e+09
+stockroom_http_requests_created{method="GET",route="/api/session",status="401"} 1.791910756713863e+09
+stockroom_http_requests_created{method="POST",route="/api/session",status="200"} 1.7919107623969076e+09
+# HELP stockroom_http_request_duration_seconds Request duration
+# TYPE stockroom_http_request_duration_seconds histogram
+stockroom_http_request_duration_seconds_bucket{le="0.005",method="GET",route="/api/items"} 0.0
+stockroom_http_request_duration_seconds_bucket{le="0.01",method="GET",route="/api/items"} 6.0
+stockroom_http_request_duration_seconds_bucket{le="0.025",method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="0.05",method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="0.1",method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="0.25",method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="0.5",method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="1.0",method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="2.0",method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="5.0",method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="+Inf",method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_count{method="GET",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_sum{method="GET",route="/api/items"} 0.05519959399998697
+stockroom_http_request_duration_seconds_bucket{le="0.005",method="POST",route="/api/items/{item_id}/movements"} 0.0
+stockroom_http_request_duration_seconds_bucket{le="0.01",method="POST",route="/api/items/{item_id}/movements"} 3.0
+stockroom_http_request_duration_seconds_bucket{le="0.025",method="POST",route="/api/items/{item_id}/movements"} 4.0
+stockroom_http_request_duration_seconds_bucket{le="0.05",method="POST",route="/api/items/{item_id}/movements"} 5.0
+stockroom_http_request_duration_seconds_bucket{le="0.1",method="POST",route="/api/items/{item_id}/movements"} 5.0
+stockroom_http_request_duration_seconds_bucket{le="0.25",method="POST",route="/api/items/{item_id}/movements"} 5.0
+stockroom_http_request_duration_seconds_bucket{le="0.5",method="POST",route="/api/items/{item_id}/movements"} 5.0
+stockroom_http_request_duration_seconds_bucket{le="1.0",method="POST",route="/api/items/{item_id}/movements"} 5.0
+stockroom_http_request_duration_seconds_bucket{le="2.0",method="POST",route="/api/items/{item_id}/movements"} 5.0
+stockroom_http_request_duration_seconds_bucket{le="5.0",method="POST",route="/api/items/{item_id}/movements"} 5.0
+stockroom_http_request_duration_seconds_bucket{le="+Inf",method="POST",route="/api/items/{item_id}/movements"} 5.0
+stockroom_http_request_duration_seconds_count{method="POST",route="/api/items/{item_id}/movements"} 5.0
+stockroom_http_request_duration_seconds_sum{method="POST",route="/api/items/{item_id}/movements"} 0.06497481899998547
+stockroom_http_request_duration_seconds_bucket{le="0.005",method="POST",route="/api/items"} 0.0
+stockroom_http_request_duration_seconds_bucket{le="0.01",method="POST",route="/api/items"} 6.0
+stockroom_http_request_duration_seconds_bucket{le="0.025",method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="0.05",method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="0.1",method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="0.25",method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="0.5",method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="1.0",method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="2.0",method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="5.0",method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_bucket{le="+Inf",method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_count{method="POST",route="/api/items"} 7.0
+stockroom_http_request_duration_seconds_sum{method="POST",route="/api/items"} 0.05654880899987802
+stockroom_http_request_duration_seconds_bucket{le="0.005",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.01",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.025",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.05",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.1",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.25",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.5",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="1.0",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="2.0",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="5.0",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="+Inf",method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_count{method="GET",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_sum{method="GET",route="/api/session"} 0.0018529550000039308
+stockroom_http_request_duration_seconds_bucket{le="0.005",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.01",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.025",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.05",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.1",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.25",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="0.5",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="1.0",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="2.0",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="5.0",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_bucket{le="+Inf",method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_count{method="POST",route="/api/session"} 1.0
+stockroom_http_request_duration_seconds_sum{method="POST",route="/api/session"} 0.00196396299998014
+# HELP stockroom_http_request_duration_seconds_created Request duration
+# TYPE stockroom_http_request_duration_seconds_created gauge
+stockroom_http_request_duration_seconds_created{method="GET",route="/api/items"} 1.7919107502171082e+09
+stockroom_http_request_duration_seconds_created{method="POST",route="/api/items/{item_id}/movements"} 1.7919107505029037e+09
+stockroom_http_request_duration_seconds_created{method="POST",route="/api/items"} 1.791910750754328e+09
+stockroom_http_request_duration_seconds_created{method="GET",route="/api/session"} 1.7919107567138941e+09
+stockroom_http_request_duration_seconds_created{method="POST",route="/api/session"} 1.791910762396936e+09

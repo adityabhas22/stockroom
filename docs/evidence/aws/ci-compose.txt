@@ -1,0 +1,42 @@
+2026-10-13T16:40:05.3167142Z #35 exporting layers 0.8s done
+2026-10-13T16:40:05.3167919Z #35 writing image sha256:a9deeb7f630186233c3dfe7ad663854be520af6c6f33371e2a647b56a3c632dd done
+2026-10-13T16:40:05.3168787Z #35 naming to docker.io/library/stockroom-backend:local done
+2026-10-13T16:40:05.3169459Z #35 DONE 0.8s
+2026-10-13T16:40:05.3170021Z 
+2026-10-13T16:40:05.3170306Z #36 [migrate] resolving provenance for metadata file
+2026-10-13T16:40:05.3170733Z #36 DONE 0.0s
+2026-10-13T16:40:05.3171139Z  frontend  Built
+2026-10-13T16:40:05.3179640Z  Network stockroom_default  Creating
+2026-10-13T16:40:05.3541513Z  Network stockroom_default  Created
+2026-10-13T16:40:05.3592632Z  Volume "stockroom_postgres-data"  Creating
+2026-10-13T16:40:05.3605380Z  Volume "stockroom_postgres-data"  Created
+2026-10-13T16:40:05.3610593Z  Container stockroom-postgres-1  Creating
+2026-10-13T16:40:05.3845620Z  Container stockroom-postgres-1  Created
+2026-10-13T16:40:05.3846570Z  Container stockroom-migrate-1  Creating
+2026-10-13T16:40:05.3924198Z  Container stockroom-migrate-1  Created
+2026-10-13T16:40:05.3925007Z  Container stockroom-stockroom-backend-1  Creating
+2026-10-13T16:40:05.4040432Z  Container stockroom-stockroom-backend-1  Created
+2026-10-13T16:40:05.4041248Z  Container stockroom-frontend-1  Creating
+2026-10-13T16:40:05.4149788Z  Container stockroom-frontend-1  Created
+2026-10-13T16:40:05.4159691Z  Container stockroom-postgres-1  Starting
+2026-10-13T16:40:05.5658824Z  Container stockroom-postgres-1  Started
+2026-10-13T16:40:05.5660224Z  Container stockroom-postgres-1  Waiting
+2026-10-13T16:40:09.0668228Z  Container stockroom-postgres-1  Healthy
+2026-10-13T16:40:09.0668814Z  Container stockroom-migrate-1  Starting
+2026-10-13T16:40:09.1688231Z  Container stockroom-migrate-1  Started
+2026-10-13T16:40:09.1688969Z  Container stockroom-migrate-1  Waiting
+2026-10-13T16:40:11.6698568Z  Container stockroom-migrate-1  Exited
+2026-10-13T16:40:11.6699026Z  Container stockroom-stockroom-backend-1  Starting
+2026-10-13T16:40:11.7860931Z  Container stockroom-stockroom-backend-1  Started
+2026-10-13T16:40:11.7861480Z  Container stockroom-stockroom-backend-1  Waiting
+2026-10-13T16:40:22.2898670Z  Container stockroom-stockroom-backend-1  Healthy
+2026-10-13T16:40:22.2899578Z  Container stockroom-frontend-1  Starting
+2026-10-13T16:40:22.4025575Z  Container stockroom-frontend-1  Started
+2026-10-13T16:40:22.4026640Z  Container stockroom-frontend-1  Waiting
+2026-10-13T16:40:22.4027495Z  Container stockroom-postgres-1  Waiting
+2026-10-13T16:40:22.4028036Z  Container stockroom-migrate-1  Waiting
+2026-10-13T16:40:22.4028557Z  Container stockroom-stockroom-backend-1  Waiting
+2026-10-13T16:40:22.9043776Z  Container stockroom-postgres-1  Healthy
+2026-10-13T16:40:22.9044374Z  Container stockroom-stockroom-backend-1  Healthy
+2026-10-13T16:40:22.9044923Z  Container stockroom-migrate-1  Exited
+2026-10-13T16:40:32.9035177Z  Container stockroom-frontend-1  Healthy

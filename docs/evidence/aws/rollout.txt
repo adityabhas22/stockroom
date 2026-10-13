@@ -1,0 +1,16 @@
+NAME     	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART          	APP VERSION
+stockroom	stockroom	2       	2026-10-13 22:38:27.160463 +0530 IST	deployed	stockroom-1.0.0	1.0.0      
+NAME                                     READY   STATUS      RESTARTS   AGE
+pod/stockroom-backend-56c69d8c4c-2nbkc   1/1     Running     0          57s
+pod/stockroom-backend-56c69d8c4c-tsnkb   1/1     Running     0          44s
+pod/stockroom-frontend-cf4b7d48-5wntb    1/1     Running     0          56s
+pod/stockroom-frontend-cf4b7d48-bjgnw    1/1     Running     0          50s
+pod/stockroom-migrate-2-cv4cx            0/1     Completed   0          56s
+pod/stockroom-postgres-0                 1/1     Running     0          5m18s
+
+NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/stockroom-backend    ClusterIP   172.20.51.0      <none>        8000/TCP   11m
+service/stockroom-frontend   ClusterIP   172.20.145.145   <none>        8080/TCP   11m
+service/stockroom-postgres   ClusterIP   None             <none>        5432/TCP   11m
+stockroom-backend ghcr.io/adityabhas22/stockroom/backend:388acdf426621f11f0186cb7351e121bfa02934a
+stockroom-frontend ghcr.io/adityabhas22/stockroom/frontend:388acdf426621f11f0186cb7351e121bfa02934a

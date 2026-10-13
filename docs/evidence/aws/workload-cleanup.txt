@@ -1,0 +1,9 @@
+Tue Oct 13 17:10:09 UTC 2026
+release "stockroom" uninstalled
+persistentvolumeclaim "data-stockroom-postgres-0" deleted
+persistentvolume/pvc-abb28ae9-ac71-428f-9b46-b147cc93fa1a condition met
+namespace "stockroom-lab" deleted
+release "monitoring" uninstalled
+release "traefik" uninstalled
+release "metrics-server" uninstalled
+No resources found

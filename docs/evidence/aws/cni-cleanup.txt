@@ -1,0 +1,4 @@
+The VPC CNI left eni-0d11f2c1bbb2fb081 after worker i-0368f87da060b563a terminated.
+The interface was available, unattached, requesterManaged=false, and tagged cluster.k8s.amazonaws.com/name=stockroom.
+It was deleted with aws ec2 delete-network-interface so Terraform could remove the remaining subnet and VPC.
+EKS also left cluster security group sg-0f127b9787f2b4998 after cluster deletion. It had no attached interfaces and was removed before Terraform completed VPC deletion.

@@ -1,0 +1,17 @@
+{
+  "recorded_at": "2026-10-13T17:21:32.481529+00:00",
+  "region": "ap-south-1",
+  "eks_clusters": [],
+  "project_vpcs": [],
+  "nat_gateway_states": [
+    "deleted"
+  ],
+  "elastic_ips": [],
+  "network_interfaces": [],
+  "worker_states": [],
+  "project_volumes": [],
+  "application_volume": [],
+  "cluster_log_groups": [],
+  "terraform_managed_resources": 0,
+  "passed": true
+}

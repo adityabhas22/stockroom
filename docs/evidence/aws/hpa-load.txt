@@ -1,0 +1,49 @@
+Tue Oct 13 17:01:52 UTC 2026
+NAME                REFERENCE                      TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+stockroom-backend   Deployment/stockroom-backend   cpu: 403%/65%   2         5         5          3m54s
+NAME                                  CPU(cores)   MEMORY(bytes)   
+stockroom-backend-db8bf8b95-675z9     422m         62Mi            
+stockroom-backend-db8bf8b95-9mgr6     434m         64Mi            
+stockroom-backend-db8bf8b95-9spp7     397m         61Mi            
+stockroom-backend-db8bf8b95-ktcx6     378m         63Mi            
+stockroom-backend-db8bf8b95-q9nsj     387m         61Mi            
+stockroom-frontend-74f786cb86-46kc4   1m           3Mi             
+stockroom-frontend-74f786cb86-6wvcj   1m           3Mi             
+stockroom-postgres-0                  219m         114Mi           
+Name:                                                  stockroom-backend
+Namespace:                                             stockroom
+Labels:                                                app.kubernetes.io/managed-by=Helm
+Annotations:                                           meta.helm.sh/release-name: stockroom
+                                                       meta.helm.sh/release-namespace: stockroom
+CreationTimestamp:                                     Tue, 13 Oct 2026 22:27:59 +0530
+Reference:                                             Deployment/stockroom-backend
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  403% (403m) / 65%
+Min replicas:                                          2
+Max replicas:                                          5
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 120 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods  Value: 1  Period: 60 seconds
+Deployment pods:    5 current / 5 desired
+Conditions:
+  Type            Status  Reason            Message
+  ----            ------  ------            -------
+  AbleToScale     True    ReadyForNewScale  recommended size matches current size
+  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  True    TooManyReplicas   the desired replica count is more than the maximum replica count
+Events:
+  Type     Reason                        Age                    From                       Message
+  ----     ------                        ----                   ----                       -------
+  Normal   SuccessfulRescale             3m41s                  horizontal-pod-autoscaler  New size: 2; reason: Current number of replicas below Spec.MinReplicas
+  Warning  FailedGetResourceMetric       3m11s (x2 over 3m26s)  horizontal-pod-autoscaler  failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+  Warning  FailedComputeMetricsReplicas  3m11s (x2 over 3m26s)  horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+  Normal   SuccessfulRescale             56s                    horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target

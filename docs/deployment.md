@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- An AWS account and an authenticated operator IAM role capable of creating the network, EKS, IAM roles, and addons.
+- An AWS account and an authenticated operator IAM role capable of creating the network, EKS, IAM roles, and addons. On a new account, the EKS managed-node service-linked role must exist or the bootstrap identity must be able to create it; EKS also needs permission to read that role.
 - AWS CLI, Terraform 1.11+, kubectl, Helm 3, Docker, and OpenSSL.
 - A GitHub repository for this source tree and permission to publish GHCR packages.
 

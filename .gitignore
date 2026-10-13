@@ -15,7 +15,8 @@ test-results/
 .terraform/
 *.tfstate*
 *.tfplan
-terraform.tfvars
+*.tfvars
+*.tfvars.json
 *.pem
 evidence/private/
 .DS_Store

@@ -152,5 +152,8 @@ All inventory APIs require a session cookie. Mutating requests also require `X-S
 - [AWS and GitHub deployment](docs/deployment.md)
 - [Backups, alerts, scaling, rollback, and failure labs](docs/runbook.md)
 - [Recorded verification](docs/verification.md)
+- [AWS execution and screenshot index](docs/aws-run.md)
+- [Captured deployment walkthrough](stockroom-walkthrough.mp4)
+- [Visual evidence index](review.html)
 
 The course architecture is described in the [DevOps capstone brief](https://github.com/Nency-Ravaliya/devops-heros/tree/main/session21-python). The application, tests, and deployment configuration here implement the workshop inventory domain.

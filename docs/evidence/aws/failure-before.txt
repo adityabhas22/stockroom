@@ -1,0 +1,25 @@
+Tue Oct 13 17:03:44 UTC 2026
+NAME                            READY   STATUS             RESTARTS   AGE
+broken-image-69577d9c7b-gzbb9   0/1     ImagePullBackOff   0          47s
+lab-web-546dfbf5f6-x55jv        1/1     Running            0          47s
+LAST SEEN   TYPE      REASON              OBJECT                               MESSAGE
+48s         Normal    SuccessfulCreate    replicaset/broken-image-69577d9c7b   Created pod: broken-image-69577d9c7b-gzbb9
+48s         Normal    ScalingReplicaSet   deployment/lab-web                   Scaled up replica set lab-web-546dfbf5f6 from 0 to 1
+48s         Normal    Scheduled           pod/broken-image-69577d9c7b-gzbb9    Successfully assigned stockroom-lab/broken-image-69577d9c7b-gzbb9 to ip-10-42-10-143.ap-south-1.compute.internal
+48s         Normal    ScalingReplicaSet   deployment/broken-image              Scaled up replica set broken-image-69577d9c7b from 0 to 1
+47s         Normal    SuccessfulCreate    replicaset/lab-web-546dfbf5f6        Created pod: lab-web-546dfbf5f6-x55jv
+47s         Normal    Scheduled           pod/lab-web-546dfbf5f6-x55jv         Successfully assigned stockroom-lab/lab-web-546dfbf5f6-x55jv to ip-10-42-10-143.ap-south-1.compute.internal
+45s         Normal    Pulling             pod/lab-web-546dfbf5f6-x55jv         Pulling image "nginxinc/nginx-unprivileged:1.28-alpine"
+40s         Normal    Pulled              pod/lab-web-546dfbf5f6-x55jv         Successfully pulled image "nginxinc/nginx-unprivileged:1.28-alpine" in 5.339s (5.339s including waiting). Image size: 23049083 bytes.
+40s         Normal    Created             pod/lab-web-546dfbf5f6-x55jv         Created container: nginx
+40s         Normal    Started             pod/lab-web-546dfbf5f6-x55jv         Started container nginx
+21s         Warning   Failed              pod/broken-image-69577d9c7b-gzbb9    Error: ImagePullBackOff
+21s         Normal    BackOff             pod/broken-image-69577d9c7b-gzbb9    Back-off pulling image "nginxinc/nginx-unprivileged:tag-does-not-exist"
+6s          Normal    Pulling             pod/broken-image-69577d9c7b-gzbb9    Pulling image "nginxinc/nginx-unprivileged:tag-does-not-exist"
+5s          Warning   Failed              pod/broken-image-69577d9c7b-gzbb9    Error: ErrImagePull
+5s          Warning   Failed              pod/broken-image-69577d9c7b-gzbb9    Failed to pull image "nginxinc/nginx-unprivileged:tag-does-not-exist": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/nginxinc/nginx-unprivileged:tag-does-not-exist": failed to resolve reference "docker.io/nginxinc/nginx-unprivileged:tag-does-not-exist": docker.io/nginxinc/nginx-unprivileged:tag-does-not-exist: not found
+NAME              TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+service/lab-web   ClusterIP   172.20.122.184   <none>        80/TCP    47s
+
+NAME                                           ADDRESSTYPE   PORTS     ENDPOINTS   AGE
+endpointslice.discovery.k8s.io/lab-web-5t4jp   IPv4          <unset>   <unset>     47s
