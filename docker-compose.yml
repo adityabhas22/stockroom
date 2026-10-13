@@ -1,0 +1,63 @@
+name: stockroom
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: stockroom
+      POSTGRES_USER: stockroom
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-stockroom-local-db}
+    volumes: [postgres-data:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U stockroom -d stockroom]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  migrate:
+    build: ./backend
+    image: stockroom-backend:local
+    command: [sh, -c, "python -m app.wait_for_db && alembic upgrade head"]
+    environment:
+      DATABASE_URL: postgresql+psycopg://stockroom:${POSTGRES_PASSWORD:-stockroom-local-db}@postgres:5432/stockroom
+    depends_on:
+      postgres: {condition: service_healthy}
+  stockroom-backend:
+    build: ./backend
+    image: stockroom-backend:local
+    environment:
+      DATABASE_URL: postgresql+psycopg://stockroom:${POSTGRES_PASSWORD:-stockroom-local-db}@postgres:5432/stockroom
+      OPERATOR_PASSWORD: ${OPERATOR_PASSWORD:-stockroom-local}
+      SESSION_SECRET: ${SESSION_SECRET:-local-only-change-this-session-key-before-deployment}
+      COOKIE_SECURE: "false"
+      APP_VERSION: ${APP_VERSION:-local}
+    ports: [127.0.0.1:8000:8000]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    restart: unless-stopped
+  frontend:
+    build: ./frontend
+    image: stockroom-frontend:local
+    ports: [127.0.0.1:3000:8080]
+    depends_on:
+      stockroom-backend: {condition: service_healthy}
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1:8080/healthz]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+volumes:
+  postgres-data:
