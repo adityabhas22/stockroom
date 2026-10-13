@@ -94,7 +94,7 @@ Pull requests never run on that runner. Keep environment branch restrictions in 
 Set the repository and the full SHA from a successful workflow run:
 
 ```sh
-export IMAGE_PATH=ghcr.io/owner/repository
+export IMAGE_PATH=ghcr.io/adityabhas22/stockroom
 export IMAGE_TAG=full-commit-sha
 export STOCKROOM_HOST=inventory.example.com
 

@@ -114,8 +114,8 @@ jobs:
         env:
           IMAGE_PATH: ${{ steps.registry.outputs.path }}
         run: |
-          docker build --pull -t "$IMAGE_PATH/backend:$GITHUB_SHA" backend
-          docker build --pull -t "$IMAGE_PATH/frontend:$GITHUB_SHA" frontend
+          docker build --pull --label "org.opencontainers.image.source=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" --label "org.opencontainers.image.revision=$GITHUB_SHA" -t "$IMAGE_PATH/backend:$GITHUB_SHA" backend
+          docker build --pull --label "org.opencontainers.image.source=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" --label "org.opencontainers.image.revision=$GITHUB_SHA" -t "$IMAGE_PATH/frontend:$GITHUB_SHA" frontend
       - name: Scan backend
         uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
         with:

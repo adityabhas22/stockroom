@@ -1,5 +1,7 @@
 # Stockroom
 
+[![Build](https://github.com/adityabhas22/stockroom/actions/workflows/ci.yml/badge.svg)](https://github.com/adityabhas22/stockroom/actions/workflows/ci.yml)
+
 Inventory for a shared workshop. Track parts by SKU and shelf, receive deliveries, issue stock, and keep the movement history after an item is archived.
 
 ![Stockroom inventory](docs/images/inventory.png)
