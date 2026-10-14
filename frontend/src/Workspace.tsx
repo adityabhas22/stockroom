@@ -275,7 +275,9 @@ export function Workspace({ logout }: { logout: () => void }) {
                 </h2>
                 <span>
                   {view === 'inventory'
-                    ? 'Keep the shelves accounted for.'
+                    ? query.trim()
+                      ? `Search results for “${query.trim()}”`
+                      : 'Keep the shelves accounted for.'
                     : 'The ledger is retained when items are archived.'}
                 </span>
               </div>

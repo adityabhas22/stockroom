@@ -16,6 +16,7 @@ test('create, receive, issue, edit, and archive an item', async ({ page }) => {
   await page.getByRole('button', { name: 'Create item' }).click();
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await page.getByLabel('Search inventory').fill(sku);
+  await expect(page.getByText(`Search results for “${sku}”`, { exact: true })).toBeVisible();
   const row = page.getByRole('row').filter({ hasText: sku });
   await expect(row).toBeVisible();
   await row.getByRole('button', { name: 'Record movement for Browser test caliper' }).click();
