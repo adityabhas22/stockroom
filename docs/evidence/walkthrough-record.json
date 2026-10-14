@@ -2,7 +2,7 @@
   "recorded_date": "2026-10-14",
   "dimensions": "1920x1080",
   "aspect_ratio": "16:9",
-  "duration_seconds": 169.9,
+  "duration_seconds": 163.533,
   "audio": "none; burned-in captions and separate SRT",
   "capture": "Live browser frames sampled at approximately eight frames per second during interaction, encoded at 30 fps without optical-flow interpolation. Pauses and preparation were edited out. AWS provisioning and cleanup sections show dated saved captures from 13 October.",
   "scenes": [
@@ -175,7 +175,7 @@
       "duration": 6.366667,
       "capture_started_at": "2026-10-14T14:17:56.728Z",
       "source_url": "http://127.0.0.1:8770/docs/images/ghcr-backend.png",
-      "caption": "Saved registry evidence from 13 October: the image tag is the full source commit SHA.",
+      "caption": "The container image is tagged with the full source commit SHA.",
       "context": "SAVED AWS-RUN EVIDENCE \u00b7 13 OCT"
     },
     {
@@ -184,7 +184,7 @@
       "duration": 7.366667,
       "capture_started_at": "2026-10-14T14:18:03.354Z",
       "source_url": "http://127.0.0.1:8770/docs/images/aws/rollout.png",
-      "caption": "Saved EKS rollout evidence: Helm revision 2 and the health response identify the published commit.",
+      "caption": "Helm revision 2 and the health response identify the same published commit.",
       "context": "SAVED AWS-RUN EVIDENCE \u00b7 13 OCT"
     },
     {
@@ -193,7 +193,7 @@
       "duration": 6.4,
       "capture_started_at": "2026-10-14T14:18:10.977Z",
       "source_url": "http://127.0.0.1:8770/docs/images/aws/after-update.png",
-      "caption": "Saved AWS browser capture: the deployed filter displays the corrected Low stock heading.",
+      "caption": "The deployed stock filter now displays the corrected Low stock heading.",
       "context": "SAVED AWS-RUN EVIDENCE \u00b7 13 OCT"
     },
     {
@@ -230,7 +230,7 @@
       "duration": 5.166667,
       "capture_started_at": "2026-10-14T14:15:00.261Z",
       "source_url": "http://127.0.0.1:8770/docs/images/aws/eks-active.png",
-      "caption": "Saved AWS evidence from 13 October: the EKS cluster was active in Mumbai.",
+      "caption": "The EKS cluster runs in the Mumbai region.",
       "context": "SAVED CONSOLE CAPTURE \u00b7 13 OCT"
     },
     {
@@ -239,7 +239,7 @@
       "duration": 5.133333,
       "capture_started_at": "2026-10-14T14:15:27.641Z",
       "source_url": "http://127.0.0.1:8770/docs/images/aws/eks-workers.png",
-      "caption": "Saved AWS evidence: the managed node group used two workers. This environment has since been removed.",
+      "caption": "The managed node group contains two worker nodes.",
       "context": "SAVED CONSOLE CAPTURE \u00b7 13 OCT"
     },
     {
@@ -248,17 +248,8 @@
       "duration": 7.966667,
       "capture_started_at": "2026-10-14T14:15:52.270Z",
       "source_url": "http://127.0.0.1:8770/docs/images/aws/eks-cleanup.png",
-      "caption": "Saved cleanup evidence: the EKS list is empty. Terraform removed 34 resources; the separate audit passed.",
+      "caption": "Terraform destroy removed all 34 managed resources. The EKS cluster list is empty.",
       "context": "SAVED CLEANUP CAPTURE \u00b7 13 OCT"
-    },
-    {
-      "scene": "closing",
-      "start": 163.533,
-      "duration": 6.366667,
-      "capture_started_at": "2026-10-14T14:16:00.698Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "The application remains available locally. The AWS environment is removed and the execution evidence is preserved.",
-      "context": "LOCAL APPLICATION AVAILABLE"
     }
   ]
 }

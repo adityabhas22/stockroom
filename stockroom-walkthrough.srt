@@ -68,15 +68,15 @@ Tests, scans and image publishing passed. Deployment to EKS used a manual Helm u
 
 18
 00:01:44,367 --> 00:01:50,733
-Saved registry evidence from 13 October: the image tag is the full source commit SHA.
+The container image is tagged with the full source commit SHA.
 
 19
 00:01:50,733 --> 00:01:58,100
-Saved EKS rollout evidence: Helm revision 2 and the health response identify the published commit.
+Helm revision 2 and the health response identify the same published commit.
 
 20
 00:01:58,100 --> 00:02:04,500
-Saved AWS browser capture: the deployed filter displays the corrected Low stock heading.
+The deployed stock filter now displays the corrected Low stock heading.
 
 21
 00:02:06,700 --> 00:02:16,233
@@ -88,16 +88,12 @@ Prometheus discovers the backend replicas and scrapes their metrics successfully
 
 23
 00:02:25,267 --> 00:02:30,433
-Saved AWS evidence from 13 October: the EKS cluster was active in Mumbai.
+The EKS cluster runs in the Mumbai region.
 
 24
 00:02:30,433 --> 00:02:35,567
-Saved AWS evidence: the managed node group used two workers. This environment has since been removed.
+The managed node group contains two worker nodes.
 
 25
 00:02:35,567 --> 00:02:43,533
-Saved cleanup evidence: the EKS list is empty. Terraform removed 34 resources; the separate audit passed.
-
-26
-00:02:43,533 --> 00:02:49,900
-The application remains available locally. The AWS environment is removed and the execution evidence is preserved.
+Terraform destroy removed all 34 managed resources. The EKS cluster list is empty.
