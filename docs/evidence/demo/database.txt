@@ -1,0 +1,29 @@
+              List of relations
+ Schema |      Name       | Type  |   Owner   
+--------+-----------------+-------+-----------
+ public | alembic_version | table | stockroom
+ public | items           | table | stockroom
+ public | movements       | table | stockroom
+(3 rows)
+
+   sku   |           name            | quantity | location 
+---------+---------------------------+----------+----------
+ CAB-001 | USB-C cable · 1 m         |       48 | A-01
+ CAB-002 | Jumper wires · 40 pack    |        6 | A-02
+ CMP-001 | Arduino Uno R3            |       18 | B-01
+ CMP-002 | Breadboard · 830 points   |       32 | B-02
+ CMP-003 | Resistor kit · 600 pcs    |        4 | B-03
+ CMP-004 | Raspberry Pi 5 · 4 GB     |        0 | B-04
+ CMP-005 | LED assortment · 100 pcs  |       15 | B-05
+ CON-001 | Solder wire · 100 g       |       12 | C-01
+ CON-002 | Heat shrink tubing kit    |        9 | C-02
+ TLS-001 | Digital multimeter        |        7 | D-01
+ TLS-002 | Precision screwdriver set |        3 | D-02
+ TLS-003 | Wire stripper             |        0 | D-03
+(12 rows)
+
+  version_num  
+---------------
+ 001_inventory
+(1 row)
+

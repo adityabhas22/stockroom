@@ -1,0 +1,32 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.12, pytest-8.4.2, pluggy-1.6.0 -- /tmp/stockroom-submission-audit/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /private/tmp/stockroom-aws-run/final/backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1
+collecting ... collected 21 items
+
+tests/test_inventory.py::test_auth_and_csrf PASSED                       [  4%]
+tests/test_inventory.py::test_logout PASSED                              [  9%]
+tests/test_inventory.py::test_create_read_update_archive PASSED          [ 14%]
+tests/test_inventory.py::test_duplicate_sku PASSED                       [ 19%]
+tests/test_inventory.py::test_validation[sku-bad sku] PASSED             [ 23%]
+tests/test_inventory.py::test_validation[name-  ] PASSED                 [ 28%]
+tests/test_inventory.py::test_validation[reorder_point--1] PASSED        [ 33%]
+tests/test_inventory.py::test_validation[reorder_point-1.5] PASSED       [ 38%]
+tests/test_inventory.py::test_validation[quantity-100] PASSED            [ 42%]
+tests/test_inventory.py::test_receipt_issue_and_audit PASSED             [ 47%]
+tests/test_inventory.py::test_idempotency PASSED                         [ 52%]
+tests/test_inventory.py::test_filters_summary_and_pagination PASSED      [ 57%]
+tests/test_inventory.py::test_invalid_movements[0] PASSED                [ 61%]
+tests/test_inventory.py::test_invalid_movements[1.1] PASSED              [ 66%]
+tests/test_inventory.py::test_invalid_movements[True] PASSED             [ 71%]
+tests/test_inventory.py::test_invalid_movements[1000001] PASSED          [ 76%]
+tests/test_inventory.py::test_concurrent_issues_cannot_oversell PASSED   [ 80%]
+tests/test_inventory.py::test_concurrent_retry_applies_once PASSED       [ 85%]
+tests/test_inventory.py::test_health_readiness_metrics PASSED            [ 90%]
+tests/test_inventory.py::test_readiness_failure_keeps_liveness PASSED    [ 95%]
+tests/test_inventory.py::test_database_rejects_negative_stock PASSED     [100%]
+
+======================== 21 passed, 1 warning in 0.81s =========================

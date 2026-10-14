@@ -1,0 +1,10 @@
+NAME                            READY   STATUS             RESTARTS   AGE   LABELS
+broken-image-5b885c49c7-d7jxj   0/1     ImagePullBackOff   0          25s   app=broken-image,pod-template-hash=5b885c49c7
+lab-web-66599f45df-wp8d7        1/1     Running            0          25s   app=lab-web,pod-template-hash=66599f45df
+LAST SEEN   TYPE      REASON   OBJECT                              MESSAGE
+23s         Warning   Failed   pod/broken-image-5b885c49c7-d7jxj   Error: ImagePullBackOff
+8s          Warning   Failed   pod/broken-image-5b885c49c7-d7jxj   Failed to pull image "nginxinc/nginx-unprivileged:tag-does-not-exist": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/nginxinc/nginx-unprivileged:tag-does-not-exist": failed to resolve reference "docker.io/nginxinc/nginx-unprivileged:tag-does-not-exist": docker.io/nginxinc/nginx-unprivileged:tag-does-not-exist: not found
+8s          Warning   Failed   pod/broken-image-5b885c49c7-d7jxj   Error: ErrImagePull
+{"app":"wrong-label"}
+NAME            ADDRESSTYPE   PORTS     ENDPOINTS   AGE
+lab-web-pzf4l   IPv4          <unset>   <unset>     25s

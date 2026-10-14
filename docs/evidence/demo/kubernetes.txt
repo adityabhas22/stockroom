@@ -1,0 +1,18 @@
+NAME                                  READY   STATUS      RESTARTS   AGE
+stockroom-backend-865f874899-g8vm6    1/1     Running     0          8m57s
+stockroom-backend-865f874899-r2rzx    1/1     Running     0          8m41s
+stockroom-frontend-59cf4b4877-2j7kn   1/1     Running     0          8m57s
+stockroom-frontend-59cf4b4877-vnjx2   1/1     Running     0          8m47s
+stockroom-migrate-4-ms5cj             0/1     Completed   0          8m57s
+stockroom-postgres-0                  1/1     Running     0          28h
+NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+stockroom-backend    ClusterIP   10.96.41.104    <none>        8000/TCP   29h
+stockroom-frontend   ClusterIP   10.96.133.218   <none>        8080/TCP   29h
+stockroom-postgres   ClusterIP   None            <none>        5432/TCP   29h
+NAME     	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART          	APP VERSION
+stockroom	stockroom	4       	2026-10-14 23:30:55.804008 +0530 IST	deployed	stockroom-1.0.0	1.0.0      
+NAME                                  CLASS     HOSTS                 ADDRESS   PORTS   AGE
+ingress.networking.k8s.io/stockroom   traefik   stockroom.localhost             80      29h
+
+NAME                                                    REFERENCE                      TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/stockroom-backend   Deployment/stockroom-backend   cpu: 10%/65%   2         5         2          29h

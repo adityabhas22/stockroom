@@ -1,6 +1,34 @@
 # Verification
 
-Recorded on 13 October 2026 on macOS, Docker Desktop, and a local kind cluster running Kubernetes 1.32.2. These results describe that environment; they are not AWS deployment results.
+## Recorded demonstration · 14 October
+
+Commit `8a57069ecae260527d8c8507904efa53239714fe` changed the results description to include the current inventory search. The recording follows the commit and push, [GitHub Actions run 38610398569](https://github.com/adityabhas22/stockroom/actions/runs/38610398569), image publication, and a manual Helm upgrade to revision 4 in the local kind cluster. The updated application displays the search description through the cluster ingress.
+
+| Check | Record |
+| --- | --- |
+| PostgreSQL API tests | [Native terminal capture](images/demo/pytest.png) |
+| Compose services healthy | [Native terminal capture](images/demo/compose-healthy.png) |
+| API create, read, update and archive | [Requests and responses](images/demo/api-crud.png) |
+| PostgreSQL inventory and movement tables | [Database query](images/demo/database.png) |
+| Successful CI run | [GitHub Actions](images/demo/ci-success.png) |
+| Trivy results for both published images | [Scan output](images/demo/scans.png) |
+| Helm revision 4 deployment | [Helm completion](images/demo/helm-complete.png), [updated application](images/demo/deployment-after.png) |
+| Running workloads, Services and Helm release | [Kubernetes output](images/demo/kubernetes.png) |
+| Published images and non-root runtime users | [Image tags and digests](images/demo/images.png) |
+| Prometheus-format application metrics | [Metrics output](images/demo/metrics.png) |
+| Application targets UP | [Prometheus, 5/5 targets](images/demo/prometheus.png) |
+| Live traffic and scaling from two replicas to five | [Grafana](images/demo/live-monitoring.png) |
+| Invalid image and Service selector diagnosis | [Failure state](images/demo/failure-diagnose.png), [recovery](images/demo/failure-fix.png) |
+
+The local load test completed 10,839 successful reads with zero failures over 60 seconds. The Grafana capture shows application traffic and an increase from two backend replicas to five; Prometheus reports five healthy application targets.
+
+[CI run](evidence/demo/ci-run.json) · [API tests](evidence/demo/pytest.txt) · [Compose](evidence/demo/compose.txt) · [Database query](evidence/demo/database.txt) · [Image digests](evidence/demo/images.txt) · [Kubernetes](evidence/demo/kubernetes.txt) · [Metrics](evidence/demo/metrics.txt) · [Load](evidence/demo/load.json) · [Failure diagnosis](evidence/demo/failure-diagnose.txt) · [Recovery](evidence/demo/failure-fix.txt) · [Backend scan](evidence/demo/backend-scan.txt) · [Frontend scan](evidence/demo/frontend-scan.txt).
+
+The terminal captures show command execution in a native terminal. GitHub published the images automatically; the Helm upgrade was run manually. The optional AWS deployment job was skipped. The recording uses dated evidence for the 13 October AWS provisioning and teardown.
+
+## Local verification · 13 October
+
+These checks ran on macOS, Docker Desktop, and a local kind cluster running Kubernetes 1.32.2.
 
 | Check | Result | Record |
 | --- | --- | --- |
@@ -43,7 +71,7 @@ The Grafana capture contains application traffic, latency, CPU, and the increase
 
 ![Prometheus application targets](images/prometheus.png)
 
-## GitHub delivery
+## Initial GitHub delivery · 13 October
 
 [Workflow run 38426641286](https://github.com/adityabhas22/stockroom/actions/runs/38426641286) passed on GitHub-hosted Linux runners on 13 October 2026 for commit `4d66ca00d4761cadb2d98108edf9d2469f097b0b`.
 

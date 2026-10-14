@@ -36,7 +36,7 @@ The first release used `4d66ca00d4761cadb2d98108edf9d2469f097b0b`. Selecting the
 
 GitHub Actions passed 21 API tests, three Chromium tests, frontend compilation, infrastructure checks, and both image scans. It published both images with that full SHA. A manual Helm upgrade installed those images as release revision 2; the browser then displayed “Low stock,” and the API [health response](evidence/aws/health-after.json) reported the same SHA. The optional OIDC deployment job remained disabled. Automated publishing and manual deployment were both exercised; an unattended deployment was not.
 
-The [video walkthrough](../stockroom-walkthrough.mp4) was recorded on 14 October. It shows live local inventory interactions and monitoring, then follows the source commit and successful GitHub run. Registry, EKS rollout, and cleanup sections use the saved 13 October evidence and are labelled accordingly. The 1920×1080 edit runs for 2 minutes 44 seconds, with preparation and waiting time removed; captions provide the explanation without audio. [Capture record](evidence/walkthrough-record.json) · [Caption file](../stockroom-walkthrough.srt).
+The [video walkthrough](../stockroom-walkthrough.mp4) combines local demonstrations recorded on 14 October with dated evidence from this AWS run. Its later commit, `8a57069ecae260527d8c8507904efa53239714fe`, passed [run 38610398569](https://github.com/adityabhas22/stockroom/actions/runs/38610398569) and was deployed manually as Helm revision 4 in the local kind cluster. That local release is separate from the EKS revision 2 recorded above. The walkthrough also covers API requests, database queries, infrastructure source, monitoring and failure diagnosis. [Local demonstration record](verification.md) · [Capture record](evidence/walkthrough-record.json) · [Captions](../stockroom-walkthrough.srt).
 
 ## Application and resilience
 
@@ -56,6 +56,4 @@ The saved destroy plan removed all 34 Terraform-managed resources. Kubernetes wo
 
 The VPC CNI left an unattached network interface after its worker terminated. EKS also left its cluster security group after cluster deletion. Both were checked for ownership and attachments, removed, and recorded in the [cleanup log](evidence/aws/cni-cleanup.txt); Terraform then completed the subnet and VPC deletions.
 
-Both temporary bootstrap access keys, their IAM user, and the operator role were removed. [Access cleanup](evidence/aws/access-cleanup.json) records the verification. The default VPC and AWS service-linked roles were left intact. Local Docker and kind environments remain available; they do not depend on the deleted AWS infrastructure.
-
-The run incurred AWS usage. Teardown stops further usage from these resources; it does not erase charges already incurred.
+Both temporary bootstrap access keys, their IAM user, and the operator role were removed. [Access cleanup](evidence/aws/access-cleanup.json) records the verification. The default VPC and AWS service-linked roles were left intact.

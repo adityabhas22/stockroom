@@ -1,255 +1,377 @@
 {
-  "recorded_date": "2026-10-14",
   "dimensions": "1920x1080",
   "aspect_ratio": "16:9",
-  "duration_seconds": 163.533,
-  "audio": "none; burned-in captions and separate SRT",
-  "capture": "Live browser frames sampled at approximately eight frames per second during interaction, encoded at 30 fps without optical-flow interpolation. Pauses and preparation were edited out. AWS provisioning and cleanup sections show dated saved captures from 13 October.",
+  "duration_seconds": 326.333,
+  "audio": "None; technical captions and SRT",
+  "capture": "Direct browser and native terminal captures. Idle intervals edited out. AWS console images and saved execution logs are from 13 October 2026. Source capture timestamps are retained below. No generated UI or motion interpolation.",
   "scenes": [
     {
-      "chapter": "Stockroom",
-      "start": 0,
-      "duration": 3
-    },
-    {
       "scene": "inventory",
-      "start": 3,
+      "chapter": "APPLICATION",
+      "start": 0,
       "duration": 5.033333,
       "capture_started_at": "2026-10-14T14:06:43.845Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "Stockroom tracks workshop parts, shelf locations and every stock movement.",
-      "context": "LIVE LOCAL \u00b7 14 OCT 2026"
+      "caption": "Stockroom tracks workshop parts, shelf locations and every stock movement."
     },
     {
       "scene": "search",
-      "start": 8.033,
+      "chapter": "APPLICATION",
+      "start": 5.033,
       "duration": 6.4,
       "capture_started_at": "2026-10-14T14:06:50.423Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "Search narrows the inventory by item name or SKU.",
-      "context": "LIVE LOCAL"
+      "caption": "Search narrows the inventory by item name or SKU."
     },
     {
       "scene": "filters",
-      "start": 14.433,
+      "chapter": "APPLICATION",
+      "start": 11.433,
       "duration": 7.366667,
       "capture_started_at": "2026-10-14T14:07:13.285Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "Stock filters separate low inventory from items that are completely out of stock.",
-      "context": "LIVE LOCAL"
+      "caption": "Stock filters separate low inventory from items that are completely out of stock."
     },
     {
       "scene": "new-item",
-      "start": 21.8,
+      "chapter": "APPLICATION",
+      "start": 18.8,
       "duration": 3.8,
       "capture_started_at": "2026-10-14T14:07:20.883Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "New items start at zero stock. Receipts and issues change the balance through the ledger.",
-      "context": "LIVE LOCAL"
+      "caption": "New items start at zero stock. Receipts and issues change the balance through the ledger."
     },
     {
       "scene": "create-item",
-      "start": 25.6,
+      "chapter": "APPLICATION",
+      "start": 22.6,
       "duration": 8.833333,
       "capture_started_at": "2026-10-14T14:07:38.349Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "A Torx bit set is added with a unique SKU, a shelf location and a reorder threshold.",
-      "context": "LIVE LOCAL"
+      "caption": "A Torx bit set is added with a unique SKU, a shelf location and a reorder threshold."
     },
     {
       "scene": "receipt-form",
-      "start": 34.433,
+      "chapter": "APPLICATION",
+      "start": 31.433,
       "duration": 3.433333,
       "capture_started_at": "2026-10-14T14:07:47.448Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "A receipt records both the quantity and its reference.",
-      "context": "LIVE LOCAL"
+      "caption": "A receipt records both the quantity and its reference."
     },
     {
       "scene": "receive-stock",
-      "start": 37.867,
+      "chapter": "APPLICATION",
+      "start": 34.867,
       "duration": 7.366667,
       "capture_started_at": "2026-10-14T14:08:09.139Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "Receiving five units updates the balance and creates a permanent movement record.",
-      "context": "LIVE LOCAL"
+      "caption": "Receiving five units updates the balance and creates a permanent movement record."
     },
     {
       "scene": "item-history",
-      "start": 45.233,
+      "chapter": "APPLICATION",
+      "start": 42.233,
       "duration": 4.766667,
       "capture_started_at": "2026-10-14T14:08:16.702Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "The item detail connects its current balance to its transaction history.",
-      "context": "LIVE LOCAL"
+      "caption": "The item detail connects its current balance to its transaction history."
     },
     {
       "scene": "edit-location",
-      "start": 50.0,
+      "chapter": "APPLICATION",
+      "start": 47.0,
       "duration": 5.966667,
       "capture_started_at": "2026-10-14T14:08:34.496Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "Item details can change without rewriting the stock history.",
-      "context": "LIVE LOCAL"
+      "caption": "Item details can change without rewriting the stock history."
     },
     {
       "scene": "save-details",
-      "start": 55.967,
+      "chapter": "APPLICATION",
+      "start": 52.967,
       "duration": 4.633333,
       "capture_started_at": "2026-10-14T14:08:51.146Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "The shelf changes from D-04 to D-05; the five-unit balance stays unchanged.",
-      "context": "LIVE LOCAL"
+      "caption": "The shelf changes from D-04 to D-05; the five-unit balance stays unchanged."
     },
     {
       "scene": "issue-stock",
-      "start": 60.6,
+      "chapter": "APPLICATION",
+      "start": 57.6,
       "duration": 3.833333,
       "capture_started_at": "2026-10-14T14:08:57.705Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "An issue removes units and records the reason. The resulting balance is shown before saving.",
-      "context": "LIVE LOCAL"
+      "caption": "An issue removes units and records the reason. The resulting balance is shown before saving."
     },
     {
       "scene": "issue-save",
-      "start": 64.433,
+      "chapter": "APPLICATION",
+      "start": 61.433,
       "duration": 7.366667,
       "capture_started_at": "2026-10-14T14:09:11.830Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "All five units are issued to the workshop, bringing the item back to zero.",
-      "context": "LIVE LOCAL"
+      "caption": "All five units are issued to the workshop, bringing the item back to zero."
     },
     {
       "scene": "archive-ready",
-      "start": 71.8,
+      "chapter": "APPLICATION",
+      "start": 68.8,
       "duration": 4.733333,
       "capture_started_at": "2026-10-14T14:09:19.445Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "Only a zero-stock item can be archived. Its receipts and issues remain recorded.",
-      "context": "LIVE LOCAL"
+      "caption": "Only a zero-stock item can be archived. Its receipts and issues remain recorded."
     },
     {
       "scene": "archive-item",
-      "start": 76.533,
+      "chapter": "APPLICATION",
+      "start": 73.533,
       "duration": 3.6,
       "capture_started_at": "2026-10-14T14:09:37.164Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "The item is archived after its stock reaches zero.",
-      "context": "LIVE LOCAL"
+      "caption": "The item is archived after its stock reaches zero."
     },
     {
       "scene": "archive-confirm",
-      "start": 80.133,
+      "chapter": "APPLICATION",
+      "start": 77.133,
       "duration": 6.466667,
       "capture_started_at": "2026-10-14T14:09:51.874Z",
-      "source_url": "http://localhost:3000/",
-      "caption": "Archiving removes the item from active inventory without deleting its history.",
-      "context": "LIVE LOCAL"
+      "caption": "Archiving removes the item from active inventory without deleting its history."
     },
     {
-      "chapter": "Delivery",
-      "start": 86.59999999999998,
-      "duration": 2.2
+      "scene": "swagger",
+      "chapter": "API, TESTS & CONTAINERS",
+      "start": 83.6,
+      "duration": 6.133333,
+      "capture_started_at": "2026-10-14T17:54:51.910Z",
+      "caption": "FastAPI publishes the REST endpoints and request schemas through OpenAPI."
     },
     {
-      "scene": "source-commit",
-      "start": 88.8,
-      "duration": 7.366667,
-      "capture_started_at": "2026-10-14T14:10:37.212Z",
-      "source_url": "https://github.com/adityabhas22/stockroom/commit/388acdf426621f11f0186cb7351e121bfa02934a#diff-9c2b187cc14759ff8675087ef30953f452f97184f7e47a1513cc2867e8295d2b",
-      "caption": "Commit 388acdf made the inventory heading follow the selected stock filter.",
-      "context": "GITHUB \u00b7 RUN OF 13 OCT"
+      "scene": "api-crud",
+      "chapter": "API, TESTS & CONTAINERS",
+      "start": 89.733,
+      "duration": 12.0,
+      "capture_started_at": "2026-10-14T17:54:32.421Z",
+      "caption": "POST creates an item, GET reads it, PUT changes its shelf, and DELETE archives it."
     },
     {
-      "scene": "pipeline",
-      "start": 96.167,
-      "duration": 8.2,
-      "capture_started_at": "2026-10-14T14:11:42.205Z",
-      "source_url": "https://github.com/adityabhas22/stockroom/actions/runs/38432189390",
-      "caption": "Tests, scans and image publishing passed. Deployment to EKS used a manual Helm upgrade.",
-      "context": "GITHUB \u00b7 RUN OF 13 OCT"
+      "scene": "database",
+      "chapter": "API, TESTS & CONTAINERS",
+      "start": 101.733,
+      "duration": 8.066667,
+      "capture_started_at": "2026-10-14T17:53:41.982Z",
+      "caption": "PostgreSQL stores the inventory and movement tables; Alembic records the applied migration."
     },
     {
-      "scene": "published-image",
-      "start": 104.367,
-      "duration": 6.366667,
-      "capture_started_at": "2026-10-14T14:17:56.728Z",
-      "source_url": "http://127.0.0.1:8770/docs/images/ghcr-backend.png",
-      "caption": "The container image is tagged with the full source commit SHA.",
-      "context": "SAVED AWS-RUN EVIDENCE \u00b7 13 OCT"
+      "scene": "pytest",
+      "chapter": "API, TESTS & CONTAINERS",
+      "start": 109.8,
+      "duration": 16.0,
+      "capture_started_at": "2026-10-14T18:06:50.523Z",
+      "caption": "The isolated PostgreSQL test database passes all 21 API and concurrency tests."
     },
     {
-      "scene": "deployed-revision",
-      "start": 110.733,
-      "duration": 7.366667,
-      "capture_started_at": "2026-10-14T14:18:03.354Z",
-      "source_url": "http://127.0.0.1:8770/docs/images/aws/rollout.png",
-      "caption": "Helm revision 2 and the health response identify the same published commit.",
-      "context": "SAVED AWS-RUN EVIDENCE \u00b7 13 OCT"
+      "scene": "compose-build",
+      "chapter": "API, TESTS & CONTAINERS",
+      "start": 125.8,
+      "duration": 8.166667,
+      "capture_started_at": "2026-10-14T18:07:17.690Z",
+      "caption": "Build and start the frontend, API and PostgreSQL containers with Docker Compose."
     },
     {
-      "scene": "deployed-change",
-      "start": 118.1,
-      "duration": 6.4,
-      "capture_started_at": "2026-10-14T14:18:10.977Z",
-      "source_url": "http://127.0.0.1:8770/docs/images/aws/after-update.png",
-      "caption": "The deployed stock filter now displays the corrected Low stock heading.",
-      "context": "SAVED AWS-RUN EVIDENCE \u00b7 13 OCT"
+      "scene": "compose-healthy",
+      "chapter": "API, TESTS & CONTAINERS",
+      "start": 133.967,
+      "duration": 6.0,
+      "capture_started_at": "2026-10-14T18:08:13.556Z",
+      "caption": "All three long-running Compose services are healthy; the migration job has completed."
     },
     {
-      "chapter": "Observability",
-      "start": 124.500001,
-      "duration": 2.2
+      "scene": "search-before",
+      "chapter": "DELIVERY",
+      "start": 139.967,
+      "duration": 6.066667,
+      "capture_started_at": "2026-10-14T17:50:55.768Z",
+      "caption": "Search filters the rows, but the description does not identify the current query."
     },
     {
-      "scene": "live-monitoring",
-      "start": 126.7,
-      "duration": 9.533333,
-      "capture_started_at": "2026-10-14T14:13:27.340Z",
-      "source_url": "http://localhost:3001/d/stockroom/stockroom-application?orgId=1&from=now-5m&to=now&refresh=5s&timezone=browser&var-DS_PROMETHEUS=prometheus",
-      "caption": "Live local Kubernetes metrics: 22,584 successful reads, zero failures, and scaling from two replicas to five.",
-      "context": "LIVE LOCAL KUBERNETES \u00b7 14 OCT"
+      "scene": "source-change",
+      "chapter": "DELIVERY",
+      "start": 146.033,
+      "duration": 10.066667,
+      "capture_started_at": "2026-10-14T17:52:08.304Z",
+      "caption": "The inventory description now displays the search term; the browser test checks it."
     },
     {
-      "scene": "prometheus",
-      "start": 136.233,
-      "duration": 6.833333,
-      "capture_started_at": "2026-10-14T14:14:02.409Z",
-      "source_url": "http://localhost:9090/targets?pool=serviceMonitor%2Fstockroom%2Fstockroom%2F0",
-      "caption": "Prometheus discovers the backend replicas and scrapes their metrics successfully.",
-      "context": "LIVE LOCAL KUBERNETES"
+      "scene": "commit-push",
+      "chapter": "DELIVERY",
+      "start": 156.1,
+      "duration": 10.066667,
+      "capture_started_at": "2026-10-14T17:52:40.999Z",
+      "caption": "The change and its browser assertion are committed and pushed to main."
     },
     {
-      "chapter": "AWS execution",
-      "start": 143.06666700000002,
-      "duration": 2.2
+      "scene": "ci-start",
+      "chapter": "DELIVERY",
+      "start": 166.167,
+      "duration": 7.133333,
+      "capture_started_at": "2026-10-14T17:53:12.122Z",
+      "caption": "Pushing to main starts the test and infrastructure jobs before image publishing."
+    },
+    {
+      "scene": "ci-running",
+      "chapter": "DELIVERY",
+      "start": 173.3,
+      "duration": 6.033333,
+      "capture_started_at": "2026-10-14T17:53:33.266Z",
+      "caption": "Tests run first; image builds and security scans depend on the earlier jobs passing."
+    },
+    {
+      "scene": "ci-success",
+      "chapter": "DELIVERY",
+      "start": 179.333,
+      "duration": 6.0,
+      "capture_started_at": "2026-10-14T18:00:09.994Z",
+      "caption": "All test, infrastructure, browser and image jobs passed for commit 8a57069."
+    },
+    {
+      "scene": "scans",
+      "chapter": "DELIVERY",
+      "start": 185.333,
+      "duration": 8.033333,
+      "capture_started_at": "2026-10-14T18:08:22.431Z",
+      "caption": "The published commit passed the pipeline and Trivy HIGH/CRITICAL vulnerability gates."
+    },
+    {
+      "scene": "images",
+      "chapter": "DELIVERY",
+      "start": 193.367,
+      "duration": 5.833333,
+      "capture_started_at": "2026-10-14T18:11:23.693Z",
+      "caption": "Both GHCR images use the full commit SHA and run as non-root users."
+    },
+    {
+      "scene": "helm-upgrade",
+      "chapter": "DELIVERY",
+      "start": 199.2,
+      "duration": 4.133333,
+      "capture_started_at": "2026-10-14T18:00:53.003Z",
+      "caption": "Helm upgrades the local cluster to the exact images published for commit 8a57069."
+    },
+    {
+      "scene": "helm-complete",
+      "chapter": "DELIVERY",
+      "start": 203.333,
+      "duration": 11.866667,
+      "capture_started_at": "2026-10-14T18:01:29.749Z",
+      "caption": "Helm revision 4 completes successfully, and both Deployments report a successful rollout."
+    },
+    {
+      "scene": "deployment-after",
+      "chapter": "DELIVERY",
+      "start": 215.2,
+      "duration": 8.8,
+      "capture_started_at": "2026-10-14T18:01:42.097Z",
+      "caption": "The updated description now shows \u201cSearch results for Arduino\u201d through the Kubernetes ingress."
+    },
+    {
+      "scene": "kubernetes",
+      "chapter": "DELIVERY",
+      "start": 224.0,
+      "duration": 7.766667,
+      "capture_started_at": "2026-10-14T18:09:50.831Z",
+      "caption": "The Helm release includes frontend and backend replicas, ClusterIP Services, ingress and an HPA."
+    },
+    {
+      "scene": "terraform-source",
+      "chapter": "INFRASTRUCTURE",
+      "start": 231.767,
+      "duration": 6.533333,
+      "capture_started_at": "2026-10-14T18:08:59.776Z",
+      "caption": "Terraform defines the VPC and public/private subnets across two availability zones."
+    },
+    {
+      "scene": "terraform-cluster",
+      "chapter": "INFRASTRUCTURE",
+      "start": 238.3,
+      "duration": 6.566667,
+      "capture_started_at": "2026-10-14T18:09:16.336Z",
+      "caption": "EKS enables audit logs and restricts public API access to the configured CIDRs."
     },
     {
       "scene": "aws-cluster",
-      "start": 145.267,
+      "chapter": "AWS \u00b7 13 OCTOBER",
+      "start": 244.867,
       "duration": 5.166667,
       "capture_started_at": "2026-10-14T14:15:00.261Z",
-      "source_url": "http://127.0.0.1:8770/docs/images/aws/eks-active.png",
-      "caption": "The EKS cluster runs in the Mumbai region.",
-      "context": "SAVED CONSOLE CAPTURE \u00b7 13 OCT"
+      "caption": "The EKS cluster runs in Mumbai."
     },
     {
       "scene": "aws-workers",
-      "start": 150.433,
+      "chapter": "AWS \u00b7 13 OCTOBER",
+      "start": 250.033,
       "duration": 5.133333,
       "capture_started_at": "2026-10-14T14:15:27.641Z",
-      "source_url": "http://127.0.0.1:8770/docs/images/aws/eks-workers.png",
-      "caption": "The managed node group contains two worker nodes.",
-      "context": "SAVED CONSOLE CAPTURE \u00b7 13 OCT"
+      "caption": "The managed node group contains two worker nodes."
+    },
+    {
+      "scene": "metrics-endpoint",
+      "chapter": "OBSERVABILITY",
+      "start": 255.167,
+      "duration": 6.133333,
+      "capture_started_at": "2026-10-14T18:12:34.005Z",
+      "caption": "The API exports request counters and response-time histograms in Prometheus format."
+    },
+    {
+      "scene": "metrics",
+      "chapter": "OBSERVABILITY",
+      "start": 261.3,
+      "duration": 6.633333,
+      "capture_started_at": "2026-10-14T18:11:03.890Z",
+      "caption": "The 60-second test completed 10,839 reads with zero failures; the HPA increased backend capacity."
+    },
+    {
+      "scene": "live-monitoring",
+      "chapter": "OBSERVABILITY",
+      "start": 267.933,
+      "duration": 7.933333,
+      "capture_started_at": "2026-10-14T18:11:45.854Z",
+      "caption": "Grafana records the traffic increase, zero server errors and scaling from two replicas to five."
+    },
+    {
+      "scene": "prometheus",
+      "chapter": "OBSERVABILITY",
+      "start": 275.867,
+      "duration": 6.466667,
+      "capture_started_at": "2026-10-14T18:11:39.117Z",
+      "caption": "Prometheus discovers the backend replicas and successfully scrapes their metrics."
+    },
+    {
+      "scene": "failure-start",
+      "chapter": "TROUBLESHOOTING",
+      "start": 282.333,
+      "duration": 9.333333,
+      "capture_started_at": "2026-10-14T18:05:32.257Z",
+      "caption": "Start two isolated Kubernetes failures: an invalid image and an incorrect Service selector."
+    },
+    {
+      "scene": "failure-diagnose",
+      "chapter": "TROUBLESHOOTING",
+      "start": 291.667,
+      "duration": 8.466667,
+      "capture_started_at": "2026-10-14T18:05:57.884Z",
+      "caption": "ImagePullBackOff identifies the missing image; the Service selector matches no pods."
+    },
+    {
+      "scene": "failure-fix",
+      "chapter": "TROUBLESHOOTING",
+      "start": 300.133,
+      "duration": 12.066667,
+      "capture_started_at": "2026-10-14T18:06:20.931Z",
+      "caption": "Correct the image tag and Service selector; the replacement pod becomes Ready and endpoints appear."
+    },
+    {
+      "scene": "aws-records",
+      "chapter": "AWS \u00b7 13 OCTOBER",
+      "start": 312.2,
+      "duration": 6.166667,
+      "capture_started_at": "2026-10-14T18:14:08.007Z",
+      "caption": "The AWS plan added 34 resources; the completed teardown removed all 34."
     },
     {
       "scene": "aws-cleanup",
-      "start": 155.567,
+      "chapter": "AWS \u00b7 13 OCTOBER",
+      "start": 318.367,
       "duration": 7.966667,
       "capture_started_at": "2026-10-14T14:15:52.270Z",
-      "source_url": "http://127.0.0.1:8770/docs/images/aws/eks-cleanup.png",
-      "caption": "Terraform destroy removed all 34 managed resources. The EKS cluster list is empty.",
-      "context": "SAVED CLEANUP CAPTURE \u00b7 13 OCT"
+      "caption": "The EKS cluster list is empty after Terraform destroys the environment."
     }
   ]
 }

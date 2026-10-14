@@ -1,99 +1,183 @@
 1
-00:00:03,000 --> 00:00:08,033
+00:00:00,000 --> 00:00:05,033
 Stockroom tracks workshop parts, shelf locations and every stock movement.
 
 2
-00:00:08,033 --> 00:00:14,433
+00:00:05,033 --> 00:00:11,433
 Search narrows the inventory by item name or SKU.
 
 3
-00:00:14,433 --> 00:00:21,800
+00:00:11,433 --> 00:00:18,800
 Stock filters separate low inventory from items that are completely out of stock.
 
 4
-00:00:21,800 --> 00:00:25,600
+00:00:18,800 --> 00:00:22,600
 New items start at zero stock. Receipts and issues change the balance through the ledger.
 
 5
-00:00:25,600 --> 00:00:34,433
+00:00:22,600 --> 00:00:31,433
 A Torx bit set is added with a unique SKU, a shelf location and a reorder threshold.
 
 6
-00:00:34,433 --> 00:00:37,867
+00:00:31,433 --> 00:00:34,867
 A receipt records both the quantity and its reference.
 
 7
-00:00:37,867 --> 00:00:45,233
+00:00:34,867 --> 00:00:42,233
 Receiving five units updates the balance and creates a permanent movement record.
 
 8
-00:00:45,233 --> 00:00:50,000
+00:00:42,233 --> 00:00:47,000
 The item detail connects its current balance to its transaction history.
 
 9
-00:00:50,000 --> 00:00:55,967
+00:00:47,000 --> 00:00:52,967
 Item details can change without rewriting the stock history.
 
 10
-00:00:55,967 --> 00:01:00,600
+00:00:52,967 --> 00:00:57,600
 The shelf changes from D-04 to D-05; the five-unit balance stays unchanged.
 
 11
-00:01:00,600 --> 00:01:04,433
+00:00:57,600 --> 00:01:01,433
 An issue removes units and records the reason. The resulting balance is shown before saving.
 
 12
-00:01:04,433 --> 00:01:11,800
+00:01:01,433 --> 00:01:08,800
 All five units are issued to the workshop, bringing the item back to zero.
 
 13
-00:01:11,800 --> 00:01:16,533
+00:01:08,800 --> 00:01:13,533
 Only a zero-stock item can be archived. Its receipts and issues remain recorded.
 
 14
-00:01:16,533 --> 00:01:20,133
+00:01:13,533 --> 00:01:17,133
 The item is archived after its stock reaches zero.
 
 15
-00:01:20,133 --> 00:01:26,600
+00:01:17,133 --> 00:01:23,600
 Archiving removes the item from active inventory without deleting its history.
 
 16
-00:01:28,800 --> 00:01:36,167
-Commit 388acdf made the inventory heading follow the selected stock filter.
+00:01:23,600 --> 00:01:29,733
+FastAPI publishes the REST endpoints and request schemas through OpenAPI.
 
 17
-00:01:36,167 --> 00:01:44,367
-Tests, scans and image publishing passed. Deployment to EKS used a manual Helm upgrade.
+00:01:29,733 --> 00:01:41,733
+POST creates an item, GET reads it, PUT changes its shelf, and DELETE archives it.
 
 18
-00:01:44,367 --> 00:01:50,733
-The container image is tagged with the full source commit SHA.
+00:01:41,733 --> 00:01:49,800
+PostgreSQL stores the inventory and movement tables; Alembic records the applied migration.
 
 19
-00:01:50,733 --> 00:01:58,100
-Helm revision 2 and the health response identify the same published commit.
+00:01:49,800 --> 00:02:05,800
+The isolated PostgreSQL test database passes all 21 API and concurrency tests.
 
 20
-00:01:58,100 --> 00:02:04,500
-The deployed stock filter now displays the corrected Low stock heading.
+00:02:05,800 --> 00:02:13,967
+Build and start the frontend, API and PostgreSQL containers with Docker Compose.
 
 21
-00:02:06,700 --> 00:02:16,233
-Live local Kubernetes metrics: 22,584 successful reads, zero failures, and scaling from two replicas to five.
+00:02:13,967 --> 00:02:19,967
+All three long-running Compose services are healthy; the migration job has completed.
 
 22
-00:02:16,233 --> 00:02:23,067
-Prometheus discovers the backend replicas and scrapes their metrics successfully.
+00:02:19,967 --> 00:02:26,033
+Search filters the rows, but the description does not identify the current query.
 
 23
-00:02:25,267 --> 00:02:30,433
-The EKS cluster runs in the Mumbai region.
+00:02:26,033 --> 00:02:36,100
+The inventory description now displays the search term; the browser test checks it.
 
 24
-00:02:30,433 --> 00:02:35,567
-The managed node group contains two worker nodes.
+00:02:36,100 --> 00:02:46,167
+The change and its browser assertion are committed and pushed to main.
 
 25
-00:02:35,567 --> 00:02:43,533
-Terraform destroy removed all 34 managed resources. The EKS cluster list is empty.
+00:02:46,167 --> 00:02:53,300
+Pushing to main starts the test and infrastructure jobs before image publishing.
+
+26
+00:02:53,300 --> 00:02:59,333
+Tests run first; image builds and security scans depend on the earlier jobs passing.
+
+27
+00:02:59,333 --> 00:03:05,333
+All test, infrastructure, browser and image jobs passed for commit 8a57069.
+
+28
+00:03:05,333 --> 00:03:13,367
+The published commit passed the pipeline and Trivy HIGH/CRITICAL vulnerability gates.
+
+29
+00:03:13,367 --> 00:03:19,200
+Both GHCR images use the full commit SHA and run as non-root users.
+
+30
+00:03:19,200 --> 00:03:23,333
+Helm upgrades the local cluster to the exact images published for commit 8a57069.
+
+31
+00:03:23,333 --> 00:03:35,200
+Helm revision 4 completes successfully, and both Deployments report a successful rollout.
+
+32
+00:03:35,200 --> 00:03:44,000
+The updated description now shows “Search results for Arduino” through the Kubernetes ingress.
+
+33
+00:03:44,000 --> 00:03:51,767
+The Helm release includes frontend and backend replicas, ClusterIP Services, ingress and an HPA.
+
+34
+00:03:51,767 --> 00:03:58,300
+Terraform defines the VPC and public/private subnets across two availability zones.
+
+35
+00:03:58,300 --> 00:04:04,867
+EKS enables audit logs and restricts public API access to the configured CIDRs.
+
+36
+00:04:04,867 --> 00:04:10,033
+The EKS cluster runs in Mumbai.
+
+37
+00:04:10,033 --> 00:04:15,167
+The managed node group contains two worker nodes.
+
+38
+00:04:15,167 --> 00:04:21,300
+The API exports request counters and response-time histograms in Prometheus format.
+
+39
+00:04:21,300 --> 00:04:27,933
+The 60-second test completed 10,839 reads with zero failures; the HPA increased backend capacity.
+
+40
+00:04:27,933 --> 00:04:35,867
+Grafana records the traffic increase, zero server errors and scaling from two replicas to five.
+
+41
+00:04:35,867 --> 00:04:42,333
+Prometheus discovers the backend replicas and successfully scrapes their metrics.
+
+42
+00:04:42,333 --> 00:04:51,667
+Start two isolated Kubernetes failures: an invalid image and an incorrect Service selector.
+
+43
+00:04:51,667 --> 00:05:00,133
+ImagePullBackOff identifies the missing image; the Service selector matches no pods.
+
+44
+00:05:00,133 --> 00:05:12,200
+Correct the image tag and Service selector; the replacement pod becomes Ready and endpoints appear.
+
+45
+00:05:12,200 --> 00:05:18,367
+The AWS plan added 34 resources; the completed teardown removed all 34.
+
+46
+00:05:18,367 --> 00:05:26,333
+The EKS cluster list is empty after Terraform destroys the environment.

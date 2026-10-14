@@ -1,0 +1,21 @@
+{
+  "recorded_date": "2026-10-14",
+  "release": "8a57069ecae260527d8c8507904efa53239714fe",
+  "ci_run": "https://github.com/adityabhas22/stockroom/actions/runs/38610398569",
+  "deployment": "Manual Helm upgrade, local kind cluster, revision 4",
+  "sha256": {
+    "database.txt": "40742bbc5dd2f67aa68647a45c39c5fd6ce063b04730afc558f30fdfbce14257",
+    "failure-fix.txt": "1da6a6d0a16f814e4a941c03133cad8f010ab0d1d485e2de465431ae135e210a",
+    "ci-run.json": "6bf3cb2cca4103b33fe195c5cc0617c1847c4026a1892f9f96bc9579b32eaeac",
+    "compose.txt": "dbbaaa6c2624cf06187fb9d645a37326e62f6e447575a5224b00bf2ab4c8db1a",
+    "frontend-scan.txt": "b2f85d21d70a4e6830ae48e39a5b0f7efd234d2c513b8dd4f641602c080891db",
+    "kubernetes.txt": "4709ac334926af13bec1d2cc6ea3c3a5590bcb12bcb3a2ad7951a74dc7f9071c",
+    "pytest.txt": "b06337641e58ab6f46af9f3fe171a8d306c8c71ec523f96fc1ee34151348a43a",
+    "failure-diagnose.txt": "580cc8fdcc9b2c1ce1970b1dbe7a1cf0a1f9e5c59fd789386d560d767e1514e1",
+    "images.txt": "6decf3fde6d68de6fe37dd24603d865524d994069b7b3b5c437aeec5fa7aaed3",
+    "release-sha.txt": "a6af07d223229eb6fbfd8ea23150e650fdc3978e0d82e6a8ef1d38a08f47348c",
+    "load.json": "568f5e70ff6cb148b812f3ba91bc23770f1ba09534521ea9d2100858099936b2",
+    "metrics.txt": "de6ef610960c9a4f1628a3a829366994de9b7443806446cbd1c3aa0d1a2ba0c4",
+    "backend-scan.txt": "d86f4ef41d983ccfd39879066970f9f39d79940993ed32fc07a13d072325a41d"
+  }
+}

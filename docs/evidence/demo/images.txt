@@ -1,0 +1,8 @@
+Image: ghcr.io/adityabhas22/stockroom/backend:8a57069ecae260527d8c8507904efa53239714fe
+Digest: ghcr.io/adityabhas22/stockroom/backend@sha256:1bc158f348f3f4c3c66ccb36541344462cdf3cd5df77564eab17ea897cfc8bb0
+Runtime user: 10001:10001
+
+Image: ghcr.io/adityabhas22/stockroom/frontend:8a57069ecae260527d8c8507904efa53239714fe
+Digest: ghcr.io/adityabhas22/stockroom/frontend@sha256:e7db5a3c1a662be36e5f742fa2d4b30107c2b70b2da9cb1169b1751be7d8c5b2
+Runtime user: 101:101
+
