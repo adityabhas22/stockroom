@@ -16,7 +16,7 @@ test('create, receive, issue, edit, and archive an item', async ({ page }) => {
   await page.getByRole('button', { name: 'Create item' }).click();
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await page.getByLabel('Search inventory').fill(sku);
-  await expect(page.getByText(`Search results for “${sku}”`, { exact: true })).toBeVisible();
+  await expect(page.getByText(`1 match for “${sku}”`, { exact: true })).toBeVisible();
   const row = page.getByRole('row').filter({ hasText: sku });
   await expect(row).toBeVisible();
   await row.getByRole('button', { name: 'Record movement for Browser test caliper' }).click();
@@ -41,6 +41,7 @@ test('create, receive, issue, edit, and archive an item', async ({ page }) => {
   await page.getByRole('button', { name: 'Archive item' }).click();
   await page.getByRole('button', { name: 'Confirm archive' }).click();
   await expect(page.getByRole('heading', { name: 'No matching items' })).toBeVisible();
+  await expect(page.getByText(`0 matches for “${sku}”`, { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Movements', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Movement ledger.' })).toBeVisible();
   await expect(page.getByText('E2E receipt', { exact: true }).first()).toBeVisible();
