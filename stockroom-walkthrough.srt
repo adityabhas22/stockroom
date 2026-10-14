@@ -1,0 +1,103 @@
+1
+00:00:03,000 --> 00:00:08,033
+Stockroom tracks workshop parts, shelf locations and every stock movement.
+
+2
+00:00:08,033 --> 00:00:14,433
+Search narrows the inventory by item name or SKU.
+
+3
+00:00:14,433 --> 00:00:21,800
+Stock filters separate low inventory from items that are completely out of stock.
+
+4
+00:00:21,800 --> 00:00:25,600
+New items start at zero stock. Receipts and issues change the balance through the ledger.
+
+5
+00:00:25,600 --> 00:00:34,433
+A Torx bit set is added with a unique SKU, a shelf location and a reorder threshold.
+
+6
+00:00:34,433 --> 00:00:37,867
+A receipt records both the quantity and its reference.
+
+7
+00:00:37,867 --> 00:00:45,233
+Receiving five units updates the balance and creates a permanent movement record.
+
+8
+00:00:45,233 --> 00:00:50,000
+The item detail connects its current balance to its transaction history.
+
+9
+00:00:50,000 --> 00:00:55,967
+Item details can change without rewriting the stock history.
+
+10
+00:00:55,967 --> 00:01:00,600
+The shelf changes from D-04 to D-05; the five-unit balance stays unchanged.
+
+11
+00:01:00,600 --> 00:01:04,433
+An issue removes units and records the reason. The resulting balance is shown before saving.
+
+12
+00:01:04,433 --> 00:01:11,800
+All five units are issued to the workshop, bringing the item back to zero.
+
+13
+00:01:11,800 --> 00:01:16,533
+Only a zero-stock item can be archived. Its receipts and issues remain recorded.
+
+14
+00:01:16,533 --> 00:01:20,133
+The item is archived after its stock reaches zero.
+
+15
+00:01:20,133 --> 00:01:26,600
+Archiving removes the item from active inventory without deleting its history.
+
+16
+00:01:28,800 --> 00:01:36,167
+Commit 388acdf made the inventory heading follow the selected stock filter.
+
+17
+00:01:36,167 --> 00:01:44,367
+Tests, scans and image publishing passed. Deployment to EKS used a manual Helm upgrade.
+
+18
+00:01:44,367 --> 00:01:50,733
+Saved registry evidence from 13 October: the image tag is the full source commit SHA.
+
+19
+00:01:50,733 --> 00:01:58,100
+Saved EKS rollout evidence: Helm revision 2 and the health response identify the published commit.
+
+20
+00:01:58,100 --> 00:02:04,500
+Saved AWS browser capture: the deployed filter displays the corrected Low stock heading.
+
+21
+00:02:06,700 --> 00:02:16,233
+Live local Kubernetes metrics: 22,584 successful reads, zero failures, and scaling from two replicas to five.
+
+22
+00:02:16,233 --> 00:02:23,067
+Prometheus discovers the backend replicas and scrapes their metrics successfully.
+
+23
+00:02:25,267 --> 00:02:30,433
+Saved AWS evidence from 13 October: the EKS cluster was active in Mumbai.
+
+24
+00:02:30,433 --> 00:02:35,567
+Saved AWS evidence: the managed node group used two workers. This environment has since been removed.
+
+25
+00:02:35,567 --> 00:02:43,533
+Saved cleanup evidence: the EKS list is empty. Terraform removed 34 resources; the separate audit passed.
+
+26
+00:02:43,533 --> 00:02:49,900
+The application remains available locally. The AWS environment is removed and the execution evidence is preserved.

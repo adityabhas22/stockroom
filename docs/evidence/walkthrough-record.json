@@ -1,0 +1,264 @@
+{
+  "recorded_date": "2026-10-14",
+  "dimensions": "1920x1080",
+  "aspect_ratio": "16:9",
+  "duration_seconds": 169.9,
+  "audio": "none; burned-in captions and separate SRT",
+  "capture": "Live browser frames sampled at approximately eight frames per second during interaction, encoded at 30 fps without optical-flow interpolation. Pauses and preparation were edited out. AWS provisioning and cleanup sections show dated saved captures from 13 October.",
+  "scenes": [
+    {
+      "chapter": "Stockroom",
+      "start": 0,
+      "duration": 3
+    },
+    {
+      "scene": "inventory",
+      "start": 3,
+      "duration": 5.033333,
+      "capture_started_at": "2026-10-14T14:06:43.845Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "Stockroom tracks workshop parts, shelf locations and every stock movement.",
+      "context": "LIVE LOCAL \u00b7 14 OCT 2026"
+    },
+    {
+      "scene": "search",
+      "start": 8.033,
+      "duration": 6.4,
+      "capture_started_at": "2026-10-14T14:06:50.423Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "Search narrows the inventory by item name or SKU.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "filters",
+      "start": 14.433,
+      "duration": 7.366667,
+      "capture_started_at": "2026-10-14T14:07:13.285Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "Stock filters separate low inventory from items that are completely out of stock.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "new-item",
+      "start": 21.8,
+      "duration": 3.8,
+      "capture_started_at": "2026-10-14T14:07:20.883Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "New items start at zero stock. Receipts and issues change the balance through the ledger.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "create-item",
+      "start": 25.6,
+      "duration": 8.833333,
+      "capture_started_at": "2026-10-14T14:07:38.349Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "A Torx bit set is added with a unique SKU, a shelf location and a reorder threshold.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "receipt-form",
+      "start": 34.433,
+      "duration": 3.433333,
+      "capture_started_at": "2026-10-14T14:07:47.448Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "A receipt records both the quantity and its reference.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "receive-stock",
+      "start": 37.867,
+      "duration": 7.366667,
+      "capture_started_at": "2026-10-14T14:08:09.139Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "Receiving five units updates the balance and creates a permanent movement record.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "item-history",
+      "start": 45.233,
+      "duration": 4.766667,
+      "capture_started_at": "2026-10-14T14:08:16.702Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "The item detail connects its current balance to its transaction history.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "edit-location",
+      "start": 50.0,
+      "duration": 5.966667,
+      "capture_started_at": "2026-10-14T14:08:34.496Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "Item details can change without rewriting the stock history.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "save-details",
+      "start": 55.967,
+      "duration": 4.633333,
+      "capture_started_at": "2026-10-14T14:08:51.146Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "The shelf changes from D-04 to D-05; the five-unit balance stays unchanged.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "issue-stock",
+      "start": 60.6,
+      "duration": 3.833333,
+      "capture_started_at": "2026-10-14T14:08:57.705Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "An issue removes units and records the reason. The resulting balance is shown before saving.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "issue-save",
+      "start": 64.433,
+      "duration": 7.366667,
+      "capture_started_at": "2026-10-14T14:09:11.830Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "All five units are issued to the workshop, bringing the item back to zero.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "archive-ready",
+      "start": 71.8,
+      "duration": 4.733333,
+      "capture_started_at": "2026-10-14T14:09:19.445Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "Only a zero-stock item can be archived. Its receipts and issues remain recorded.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "archive-item",
+      "start": 76.533,
+      "duration": 3.6,
+      "capture_started_at": "2026-10-14T14:09:37.164Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "The item is archived after its stock reaches zero.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "scene": "archive-confirm",
+      "start": 80.133,
+      "duration": 6.466667,
+      "capture_started_at": "2026-10-14T14:09:51.874Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "Archiving removes the item from active inventory without deleting its history.",
+      "context": "LIVE LOCAL"
+    },
+    {
+      "chapter": "Delivery",
+      "start": 86.59999999999998,
+      "duration": 2.2
+    },
+    {
+      "scene": "source-commit",
+      "start": 88.8,
+      "duration": 7.366667,
+      "capture_started_at": "2026-10-14T14:10:37.212Z",
+      "source_url": "https://github.com/adityabhas22/stockroom/commit/388acdf426621f11f0186cb7351e121bfa02934a#diff-9c2b187cc14759ff8675087ef30953f452f97184f7e47a1513cc2867e8295d2b",
+      "caption": "Commit 388acdf made the inventory heading follow the selected stock filter.",
+      "context": "GITHUB \u00b7 RUN OF 13 OCT"
+    },
+    {
+      "scene": "pipeline",
+      "start": 96.167,
+      "duration": 8.2,
+      "capture_started_at": "2026-10-14T14:11:42.205Z",
+      "source_url": "https://github.com/adityabhas22/stockroom/actions/runs/38432189390",
+      "caption": "Tests, scans and image publishing passed. Deployment to EKS used a manual Helm upgrade.",
+      "context": "GITHUB \u00b7 RUN OF 13 OCT"
+    },
+    {
+      "scene": "published-image",
+      "start": 104.367,
+      "duration": 6.366667,
+      "capture_started_at": "2026-10-14T14:17:56.728Z",
+      "source_url": "http://127.0.0.1:8770/docs/images/ghcr-backend.png",
+      "caption": "Saved registry evidence from 13 October: the image tag is the full source commit SHA.",
+      "context": "SAVED AWS-RUN EVIDENCE \u00b7 13 OCT"
+    },
+    {
+      "scene": "deployed-revision",
+      "start": 110.733,
+      "duration": 7.366667,
+      "capture_started_at": "2026-10-14T14:18:03.354Z",
+      "source_url": "http://127.0.0.1:8770/docs/images/aws/rollout.png",
+      "caption": "Saved EKS rollout evidence: Helm revision 2 and the health response identify the published commit.",
+      "context": "SAVED AWS-RUN EVIDENCE \u00b7 13 OCT"
+    },
+    {
+      "scene": "deployed-change",
+      "start": 118.1,
+      "duration": 6.4,
+      "capture_started_at": "2026-10-14T14:18:10.977Z",
+      "source_url": "http://127.0.0.1:8770/docs/images/aws/after-update.png",
+      "caption": "Saved AWS browser capture: the deployed filter displays the corrected Low stock heading.",
+      "context": "SAVED AWS-RUN EVIDENCE \u00b7 13 OCT"
+    },
+    {
+      "chapter": "Observability",
+      "start": 124.500001,
+      "duration": 2.2
+    },
+    {
+      "scene": "live-monitoring",
+      "start": 126.7,
+      "duration": 9.533333,
+      "capture_started_at": "2026-10-14T14:13:27.340Z",
+      "source_url": "http://localhost:3001/d/stockroom/stockroom-application?orgId=1&from=now-5m&to=now&refresh=5s&timezone=browser&var-DS_PROMETHEUS=prometheus",
+      "caption": "Live local Kubernetes metrics: 22,584 successful reads, zero failures, and scaling from two replicas to five.",
+      "context": "LIVE LOCAL KUBERNETES \u00b7 14 OCT"
+    },
+    {
+      "scene": "prometheus",
+      "start": 136.233,
+      "duration": 6.833333,
+      "capture_started_at": "2026-10-14T14:14:02.409Z",
+      "source_url": "http://localhost:9090/targets?pool=serviceMonitor%2Fstockroom%2Fstockroom%2F0",
+      "caption": "Prometheus discovers the backend replicas and scrapes their metrics successfully.",
+      "context": "LIVE LOCAL KUBERNETES"
+    },
+    {
+      "chapter": "AWS execution",
+      "start": 143.06666700000002,
+      "duration": 2.2
+    },
+    {
+      "scene": "aws-cluster",
+      "start": 145.267,
+      "duration": 5.166667,
+      "capture_started_at": "2026-10-14T14:15:00.261Z",
+      "source_url": "http://127.0.0.1:8770/docs/images/aws/eks-active.png",
+      "caption": "Saved AWS evidence from 13 October: the EKS cluster was active in Mumbai.",
+      "context": "SAVED CONSOLE CAPTURE \u00b7 13 OCT"
+    },
+    {
+      "scene": "aws-workers",
+      "start": 150.433,
+      "duration": 5.133333,
+      "capture_started_at": "2026-10-14T14:15:27.641Z",
+      "source_url": "http://127.0.0.1:8770/docs/images/aws/eks-workers.png",
+      "caption": "Saved AWS evidence: the managed node group used two workers. This environment has since been removed.",
+      "context": "SAVED CONSOLE CAPTURE \u00b7 13 OCT"
+    },
+    {
+      "scene": "aws-cleanup",
+      "start": 155.567,
+      "duration": 7.966667,
+      "capture_started_at": "2026-10-14T14:15:52.270Z",
+      "source_url": "http://127.0.0.1:8770/docs/images/aws/eks-cleanup.png",
+      "caption": "Saved cleanup evidence: the EKS list is empty. Terraform removed 34 resources; the separate audit passed.",
+      "context": "SAVED CLEANUP CAPTURE \u00b7 13 OCT"
+    },
+    {
+      "scene": "closing",
+      "start": 163.533,
+      "duration": 6.366667,
+      "capture_started_at": "2026-10-14T14:16:00.698Z",
+      "source_url": "http://localhost:3000/",
+      "caption": "The application remains available locally. The AWS environment is removed and the execution evidence is preserved.",
+      "context": "LOCAL APPLICATION AVAILABLE"
+    }
+  ]
+}
