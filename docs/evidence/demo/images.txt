@@ -1,8 +1,2 @@
-Image: ghcr.io/adityabhas22/stockroom/backend:8a57069ecae260527d8c8507904efa53239714fe
-Digest: ghcr.io/adityabhas22/stockroom/backend@sha256:1bc158f348f3f4c3c66ccb36541344462cdf3cd5df77564eab17ea897cfc8bb0
-Runtime user: 10001:10001
-
-Image: ghcr.io/adityabhas22/stockroom/frontend:8a57069ecae260527d8c8507904efa53239714fe
-Digest: ghcr.io/adityabhas22/stockroom/frontend@sha256:e7db5a3c1a662be36e5f742fa2d4b30107c2b70b2da9cb1169b1751be7d8c5b2
-Runtime user: 101:101
-
+["ghcr.io/adityabhas22/stockroom/backend:99a0e2ca5b0b1beea3b142b3782ab439ac514ff1"] ["ghcr.io/adityabhas22/stockroom/backend@sha256:bc52077ea6fccd9046b2f4e1df532cb81c22348cd7ad3306dff0646252e818d2"] user=10001:10001
+["ghcr.io/adityabhas22/stockroom/frontend:99a0e2ca5b0b1beea3b142b3782ab439ac514ff1"] ["ghcr.io/adityabhas22/stockroom/frontend@sha256:9c5eb290690cf34d0c2157383ac9d3a25e5d81f84a27b7dc28efb04f4a2dbcf9"] user=101:101

@@ -1,12 +1,10 @@
-{"successful_requests": 10839, "failed_requests": 0, "duration_seconds": 60}
 NAME                                  CPU(cores)   MEMORY(bytes)   
-stockroom-backend-865f874899-52rlj    368m         80Mi            
-stockroom-backend-865f874899-8rt2m    452m         81Mi            
-stockroom-backend-865f874899-g8vm6    388m         83Mi            
-stockroom-backend-865f874899-r2rzx    285m         81Mi            
-stockroom-backend-865f874899-s8jwr    325m         83Mi            
-stockroom-frontend-59cf4b4877-2j7kn   1m           26Mi            
-stockroom-frontend-59cf4b4877-vnjx2   1m           25Mi            
-stockroom-postgres-0                  205m         111Mi           
-NAME                REFERENCE                      TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
-stockroom-backend   Deployment/stockroom-backend   cpu: 363%/65%   2         5         5          29h
+stockroom-backend-6b744d9c5f-gklls    16m          80Mi            
+stockroom-backend-6b744d9c5f-qtdgz    14m          80Mi            
+stockroom-backend-6b744d9c5f-qzdpb    15m          80Mi            
+stockroom-backend-6b744d9c5f-vtgdf    8m           83Mi            
+stockroom-frontend-7c7967f4c7-ftxkd   1m           26Mi            
+stockroom-frontend-7c7967f4c7-nx99q   1m           25Mi            
+stockroom-postgres-0                  14m          93Mi            
+NAME                REFERENCE                      TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
+stockroom-backend   Deployment/stockroom-backend   cpu: 13%/65%   2         5         4          29h

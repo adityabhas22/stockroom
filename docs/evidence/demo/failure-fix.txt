@@ -1,12 +1,7 @@
-deployment.apps/broken-image image updated
-service/lab-web patched
-Waiting for deployment "broken-image" rollout to finish: 1 old replicas are pending termination...
-Waiting for deployment "broken-image" rollout to finish: 1 old replicas are pending termination...
-Waiting for deployment "broken-image" rollout to finish: 1 old replicas are pending termination...
 deployment "broken-image" successfully rolled out
-NAME                            READY   STATUS        RESTARTS   AGE
-broken-image-5b885c49c7-d7jxj   0/1     Terminating   0          49s
-broken-image-7b8dbc9b54-n52v5   1/1     Running       0          1s
-lab-web-66599f45df-wp8d7        1/1     Running       0          49s
-NAME            ADDRESSTYPE   PORTS   ENDPOINTS     AGE
-lab-web-pzf4l   IPv4          8080    10.244.0.51   49s
+NAME                                READY   STATUS    RESTARTS   AGE
+pod/broken-image-7b8dbc9b54-ln69g   1/1     Running   0          2m59s
+pod/lab-web-66599f45df-s4gm9        1/1     Running   0          3m56s
+
+NAME                                           ADDRESSTYPE   PORTS   ENDPOINTS     AGE
+endpointslice.discovery.k8s.io/lab-web-w6pk8   IPv4          8080    10.244.0.65   3m56s

@@ -63,121 +63,145 @@ Archiving removes the item from active inventory without deleting its history.
 FastAPI publishes the REST endpoints and request schemas through OpenAPI.
 
 17
-00:01:29,733 --> 00:01:41,733
-POST creates an item, GET reads it, PUT changes its shelf, and DELETE archives it.
+00:01:29,733 --> 00:01:36,067
+POST creates a zero-stock item with a unique SKU.
 
 18
-00:01:41,733 --> 00:01:49,800
-PostgreSQL stores the inventory and movement tables; Alembic records the applied migration.
+00:01:36,067 --> 00:01:40,867
+GET returns the newly stored item.
 
 19
-00:01:49,800 --> 00:02:05,800
-The isolated PostgreSQL test database passes all 21 API and concurrency tests.
+00:01:40,867 --> 00:01:46,700
+PUT updates the shelf location and increments the item version.
 
 20
-00:02:05,800 --> 00:02:13,967
-Build and start the frontend, API and PostgreSQL containers with Docker Compose.
+00:01:46,700 --> 00:01:51,533
+DELETE archives the zero-stock item and returns HTTP 204.
 
 21
-00:02:13,967 --> 00:02:19,967
-All three long-running Compose services are healthy; the migration job has completed.
+00:01:51,533 --> 00:01:58,500
+PostgreSQL stores inventory items, movement history and schema migration records.
 
 22
-00:02:19,967 --> 00:02:26,033
-Search filters the rows, but the description does not identify the current query.
+00:01:58,500 --> 00:02:05,367
+All 21 API and concurrency tests pass against an isolated PostgreSQL database.
 
 23
-00:02:26,033 --> 00:02:36,100
-The inventory description now displays the search term; the browser test checks it.
+00:02:05,367 --> 00:02:14,000
+Build and start the application containers with Docker Compose.
 
 24
-00:02:36,100 --> 00:02:46,167
-The change and its browser assertion are committed and pushed to main.
+00:02:14,000 --> 00:02:19,533
+Frontend, API and PostgreSQL are healthy after the build.
 
 25
-00:02:46,167 --> 00:02:53,300
-Pushing to main starts the test and infrastructure jobs before image publishing.
+00:02:19,533 --> 00:02:25,567
+The search description identifies the query but does not show the number of matches.
 
 26
-00:02:53,300 --> 00:02:59,333
-Tests run first; image builds and security scans depend on the earlier jobs passing.
+00:02:25,567 --> 00:02:35,567
+Show the number of search matches and check both singular and zero-result wording.
 
 27
-00:02:59,333 --> 00:03:05,333
-All test, infrastructure, browser and image jobs passed for commit 8a57069.
+00:02:35,567 --> 00:02:45,333
+Commit the search-count change and push it to GitHub.
 
 28
-00:03:05,333 --> 00:03:13,367
-The published commit passed the pipeline and Trivy HIGH/CRITICAL vulnerability gates.
+00:02:45,333 --> 00:02:50,333
+The pushed commit starts the GitHub Actions workflow.
 
 29
-00:03:13,367 --> 00:03:19,200
-Both GHCR images use the full commit SHA and run as non-root users.
+00:02:50,333 --> 00:02:56,467
+The push starts tests and infrastructure checks before image publishing.
 
 30
-00:03:19,200 --> 00:03:23,333
-Helm upgrades the local cluster to the exact images published for commit 8a57069.
+00:02:56,467 --> 00:03:02,733
+Tests, infrastructure checks, browser tests and image publication all passed for commit 99a0e2c.
 
 31
-00:03:23,333 --> 00:03:35,200
-Helm revision 4 completes successfully, and both Deployments report a successful rollout.
+00:03:02,733 --> 00:03:09,467
+The backend Trivy report identifies the published image and reports zero HIGH/CRITICAL findings.
 
 32
-00:03:35,200 --> 00:03:44,000
-The updated description now shows “Search results for Arduino” through the Kubernetes ingress.
+00:03:09,467 --> 00:03:15,533
+The frontend image also passes the HIGH/CRITICAL vulnerability gate.
 
 33
-00:03:44,000 --> 00:03:51,767
-The Helm release includes frontend and backend replicas, ClusterIP Services, ingress and an HPA.
+00:03:15,533 --> 00:03:21,567
+Both published GHCR images carry the full source commit SHA.
 
 34
-00:03:51,767 --> 00:03:58,300
-Terraform defines the VPC and public/private subnets across two availability zones.
+00:03:21,567 --> 00:03:25,567
+Upgrade the application to the exact frontend and backend images published by this commit.
 
 35
-00:03:58,300 --> 00:04:04,867
-EKS enables audit logs and restricts public API access to the configured CIDRs.
+00:03:25,567 --> 00:03:30,367
+Helm revision 5 is deployed successfully.
 
 36
-00:04:04,867 --> 00:04:10,033
-The EKS cluster runs in Mumbai.
+00:03:30,367 --> 00:03:37,367
+Helm lists revision 5; both Deployments use the newly published commit.
 
 37
-00:04:10,033 --> 00:04:15,167
-The managed node group contains two worker nodes.
+00:03:37,367 --> 00:03:44,833
+The updated search now displays “1 match for Arduino” through the Kubernetes ingress.
 
 38
-00:04:15,167 --> 00:04:21,300
-The API exports request counters and response-time histograms in Prometheus format.
+00:03:44,833 --> 00:03:51,967
+Kubernetes reports healthy frontend and backend pods, Services and ingress.
 
 39
-00:04:21,300 --> 00:04:27,933
-The 60-second test completed 10,839 reads with zero failures; the HPA increased backend capacity.
+00:03:51,967 --> 00:03:57,900
+Terraform defines the VPC and public/private subnets across two availability zones.
 
 40
-00:04:27,933 --> 00:04:35,867
-Grafana records the traffic increase, zero server errors and scaling from two replicas to five.
+00:03:57,900 --> 00:04:04,500
+EKS enables audit logs and restricts public API access to configured CIDRs.
 
 41
-00:04:35,867 --> 00:04:42,333
-Prometheus discovers the backend replicas and successfully scrapes their metrics.
+00:04:04,500 --> 00:04:09,533
+The EKS cluster runs in Mumbai.
 
 42
-00:04:42,333 --> 00:04:51,667
-Start two isolated Kubernetes failures: an invalid image and an incorrect Service selector.
+00:04:09,533 --> 00:04:14,667
+The managed node group contains two worker nodes.
 
 43
-00:04:51,667 --> 00:05:00,133
-ImagePullBackOff identifies the missing image; the Service selector matches no pods.
+00:04:14,667 --> 00:04:20,700
+The API exports request counters and latency histograms in Prometheus format.
 
 44
-00:05:00,133 --> 00:05:12,200
-Correct the image tag and Service selector; the replacement pod becomes Ready and endpoints appear.
+00:04:20,700 --> 00:04:27,267
+The HPA increases backend capacity under load.
 
 45
-00:05:12,200 --> 00:05:18,367
-The AWS plan added 34 resources; the completed teardown removed all 34.
+00:04:27,267 --> 00:04:35,267
+Grafana records request rate, latency, zero server errors and scaling from two replicas to five.
 
 46
-00:05:18,367 --> 00:05:26,333
+00:04:35,267 --> 00:04:41,700
+Prometheus scrapes the application replicas successfully.
+
+47
+00:04:41,700 --> 00:04:47,900
+Apply an invalid container image and a Service with an incorrect selector.
+
+48
+00:04:47,900 --> 00:04:55,067
+The invalid image enters ImagePullBackOff, and the mismatched Service has no endpoints.
+
+49
+00:04:55,067 --> 00:05:03,067
+Correct the image tag and the Service selector.
+
+50
+00:05:03,067 --> 00:05:09,733
+Both pods are Ready, and the repaired Service has a matching endpoint.
+
+51
+00:05:09,733 --> 00:05:15,600
+The saved AWS plan added 34 resources; the teardown removed all 34.
+
+52
+00:05:15,600 --> 00:05:23,567
 The EKS cluster list is empty after Terraform destroys the environment.

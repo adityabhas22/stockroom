@@ -1,7 +1,7 @@
 {
   "dimensions": "1920x1080",
   "aspect_ratio": "16:9",
-  "duration_seconds": 326.333,
+  "duration_seconds": 323.567,
   "audio": "None; technical captions and SRT",
   "capture": "Direct browser and native terminal captures. Idle intervals edited out. AWS console images and saved execution logs are from 13 October 2026. Source capture timestamps are retained below. No generated UI or motion interpolation.",
   "scenes": [
@@ -134,169 +134,209 @@
       "caption": "FastAPI publishes the REST endpoints and request schemas through OpenAPI."
     },
     {
-      "scene": "api-crud",
+      "scene": "api-create",
       "chapter": "API, TESTS & CONTAINERS",
       "start": 89.733,
-      "duration": 12.0,
-      "capture_started_at": "2026-10-14T17:54:32.421Z",
-      "caption": "POST creates an item, GET reads it, PUT changes its shelf, and DELETE archives it."
+      "duration": 6.333333,
+      "capture_started_at": "2026-10-14T18:33:27.610Z",
+      "caption": "POST creates a zero-stock item with a unique SKU."
+    },
+    {
+      "scene": "api-read",
+      "chapter": "API, TESTS & CONTAINERS",
+      "start": 96.067,
+      "duration": 4.8,
+      "capture_started_at": "2026-10-14T18:34:06.735Z",
+      "caption": "GET returns the newly stored item."
+    },
+    {
+      "scene": "api-crud",
+      "chapter": "API, TESTS & CONTAINERS",
+      "start": 100.867,
+      "duration": 5.833333,
+      "capture_started_at": "2026-10-14T18:34:14.846Z",
+      "caption": "PUT updates the shelf location and increments the item version."
+    },
+    {
+      "scene": "api-delete",
+      "chapter": "API, TESTS & CONTAINERS",
+      "start": 106.7,
+      "duration": 4.833333,
+      "capture_started_at": "2026-10-14T18:34:31.644Z",
+      "caption": "DELETE archives the zero-stock item and returns HTTP 204."
     },
     {
       "scene": "database",
       "chapter": "API, TESTS & CONTAINERS",
-      "start": 101.733,
-      "duration": 8.066667,
-      "capture_started_at": "2026-10-14T17:53:41.982Z",
-      "caption": "PostgreSQL stores the inventory and movement tables; Alembic records the applied migration."
+      "start": 111.533,
+      "duration": 6.966667,
+      "capture_started_at": "2026-10-14T18:31:59.725Z",
+      "caption": "PostgreSQL stores inventory items, movement history and schema migration records."
     },
     {
       "scene": "pytest",
       "chapter": "API, TESTS & CONTAINERS",
-      "start": 109.8,
-      "duration": 16.0,
-      "capture_started_at": "2026-10-14T18:06:50.523Z",
-      "caption": "The isolated PostgreSQL test database passes all 21 API and concurrency tests."
+      "start": 118.5,
+      "duration": 6.866667,
+      "capture_started_at": "2026-10-14T18:31:48.386Z",
+      "caption": "All 21 API and concurrency tests pass against an isolated PostgreSQL database."
     },
     {
       "scene": "compose-build",
       "chapter": "API, TESTS & CONTAINERS",
-      "start": 125.8,
-      "duration": 8.166667,
-      "capture_started_at": "2026-10-14T18:07:17.690Z",
-      "caption": "Build and start the frontend, API and PostgreSQL containers with Docker Compose."
+      "start": 125.367,
+      "duration": 8.633333,
+      "capture_started_at": "2026-10-14T18:30:01.725Z",
+      "caption": "Build and start the application containers with Docker Compose."
     },
     {
       "scene": "compose-healthy",
       "chapter": "API, TESTS & CONTAINERS",
-      "start": 133.967,
-      "duration": 6.0,
-      "capture_started_at": "2026-10-14T18:08:13.556Z",
-      "caption": "All three long-running Compose services are healthy; the migration job has completed."
+      "start": 134.0,
+      "duration": 5.533333,
+      "capture_started_at": "2026-10-14T18:31:01.018Z",
+      "caption": "Frontend, API and PostgreSQL are healthy after the build."
     },
     {
       "scene": "search-before",
       "chapter": "DELIVERY",
-      "start": 139.967,
-      "duration": 6.066667,
-      "capture_started_at": "2026-10-14T17:50:55.768Z",
-      "caption": "Search filters the rows, but the description does not identify the current query."
+      "start": 139.533,
+      "duration": 6.033333,
+      "capture_started_at": "2026-10-14T18:27:50.544Z",
+      "caption": "The search description identifies the query but does not show the number of matches."
     },
     {
       "scene": "source-change",
       "chapter": "DELIVERY",
-      "start": 146.033,
-      "duration": 10.066667,
-      "capture_started_at": "2026-10-14T17:52:08.304Z",
-      "caption": "The inventory description now displays the search term; the browser test checks it."
+      "start": 145.567,
+      "duration": 10.0,
+      "capture_started_at": "2026-10-14T18:28:17.019Z",
+      "caption": "Show the number of search matches and check both singular and zero-result wording."
     },
     {
       "scene": "commit-push",
       "chapter": "DELIVERY",
-      "start": 156.1,
-      "duration": 10.066667,
-      "capture_started_at": "2026-10-14T17:52:40.999Z",
-      "caption": "The change and its browser assertion are committed and pushed to main."
+      "start": 155.567,
+      "duration": 9.766667,
+      "capture_started_at": "2026-10-14T18:28:46.816Z",
+      "caption": "Commit the search-count change and push it to GitHub."
     },
     {
-      "scene": "ci-start",
+      "scene": "commit-complete",
       "chapter": "DELIVERY",
-      "start": 166.167,
-      "duration": 7.133333,
-      "capture_started_at": "2026-10-14T17:53:12.122Z",
-      "caption": "Pushing to main starts the test and infrastructure jobs before image publishing."
+      "start": 165.333,
+      "duration": 5.0,
+      "capture_started_at": "2026-10-14T18:29:22.698Z",
+      "caption": "The pushed commit starts the GitHub Actions workflow."
     },
     {
       "scene": "ci-running",
       "chapter": "DELIVERY",
-      "start": 173.3,
-      "duration": 6.033333,
-      "capture_started_at": "2026-10-14T17:53:33.266Z",
-      "caption": "Tests run first; image builds and security scans depend on the earlier jobs passing."
+      "start": 170.333,
+      "duration": 6.133333,
+      "capture_started_at": "2026-10-14T18:29:52.386Z",
+      "caption": "The push starts tests and infrastructure checks before image publishing."
     },
     {
       "scene": "ci-success",
       "chapter": "DELIVERY",
-      "start": 179.333,
-      "duration": 6.0,
-      "capture_started_at": "2026-10-14T18:00:09.994Z",
-      "caption": "All test, infrastructure, browser and image jobs passed for commit 8a57069."
+      "start": 176.467,
+      "duration": 6.266667,
+      "capture_started_at": "2026-10-14T18:36:10.547Z",
+      "caption": "Tests, infrastructure checks, browser tests and image publication all passed for commit 99a0e2c."
     },
     {
       "scene": "scans",
       "chapter": "DELIVERY",
-      "start": 185.333,
-      "duration": 8.033333,
-      "capture_started_at": "2026-10-14T18:08:22.431Z",
-      "caption": "The published commit passed the pipeline and Trivy HIGH/CRITICAL vulnerability gates."
+      "start": 182.733,
+      "duration": 6.733333,
+      "capture_started_at": "2026-10-14T18:36:41.984Z",
+      "caption": "The backend Trivy report identifies the published image and reports zero HIGH/CRITICAL findings."
+    },
+    {
+      "scene": "scans-frontend",
+      "chapter": "DELIVERY",
+      "start": 189.467,
+      "duration": 6.066667,
+      "capture_started_at": "2026-10-14T18:36:51.971Z",
+      "caption": "The frontend image also passes the HIGH/CRITICAL vulnerability gate."
     },
     {
       "scene": "images",
       "chapter": "DELIVERY",
-      "start": 193.367,
-      "duration": 5.833333,
-      "capture_started_at": "2026-10-14T18:11:23.693Z",
-      "caption": "Both GHCR images use the full commit SHA and run as non-root users."
+      "start": 195.533,
+      "duration": 6.033333,
+      "capture_started_at": "2026-10-14T18:36:19.725Z",
+      "caption": "Both published GHCR images carry the full source commit SHA."
     },
     {
       "scene": "helm-upgrade",
       "chapter": "DELIVERY",
-      "start": 199.2,
-      "duration": 4.133333,
-      "capture_started_at": "2026-10-14T18:00:53.003Z",
-      "caption": "Helm upgrades the local cluster to the exact images published for commit 8a57069."
+      "start": 201.567,
+      "duration": 4.0,
+      "capture_started_at": "2026-10-14T18:37:14.377Z",
+      "caption": "Upgrade the application to the exact frontend and backend images published by this commit."
     },
     {
       "scene": "helm-complete",
       "chapter": "DELIVERY",
-      "start": 203.333,
-      "duration": 11.866667,
-      "capture_started_at": "2026-10-14T18:01:29.749Z",
-      "caption": "Helm revision 4 completes successfully, and both Deployments report a successful rollout."
+      "start": 205.567,
+      "duration": 4.8,
+      "capture_started_at": "2026-10-14T18:38:16.981Z",
+      "caption": "Helm revision 5 is deployed successfully."
+    },
+    {
+      "scene": "helm-release",
+      "chapter": "DELIVERY",
+      "start": 210.367,
+      "duration": 7.0,
+      "capture_started_at": "2026-10-14T18:38:44.425Z",
+      "caption": "Helm lists revision 5; both Deployments use the newly published commit."
     },
     {
       "scene": "deployment-after",
       "chapter": "DELIVERY",
-      "start": 215.2,
-      "duration": 8.8,
-      "capture_started_at": "2026-10-14T18:01:42.097Z",
-      "caption": "The updated description now shows \u201cSearch results for Arduino\u201d through the Kubernetes ingress."
+      "start": 217.367,
+      "duration": 7.466667,
+      "capture_started_at": "2026-10-14T18:38:52.235Z",
+      "caption": "The updated search now displays \u201c1 match for Arduino\u201d through the Kubernetes ingress."
     },
     {
       "scene": "kubernetes",
       "chapter": "DELIVERY",
-      "start": 224.0,
-      "duration": 7.766667,
-      "capture_started_at": "2026-10-14T18:09:50.831Z",
-      "caption": "The Helm release includes frontend and backend replicas, ClusterIP Services, ingress and an HPA."
+      "start": 224.833,
+      "duration": 7.133333,
+      "capture_started_at": "2026-10-14T18:38:25.646Z",
+      "caption": "Kubernetes reports healthy frontend and backend pods, Services and ingress."
     },
     {
       "scene": "terraform-source",
       "chapter": "INFRASTRUCTURE",
-      "start": 231.767,
-      "duration": 6.533333,
-      "capture_started_at": "2026-10-14T18:08:59.776Z",
+      "start": 231.967,
+      "duration": 5.933333,
+      "capture_started_at": "2026-10-14T18:34:40.687Z",
       "caption": "Terraform defines the VPC and public/private subnets across two availability zones."
     },
     {
       "scene": "terraform-cluster",
       "chapter": "INFRASTRUCTURE",
-      "start": 238.3,
-      "duration": 6.566667,
-      "capture_started_at": "2026-10-14T18:09:16.336Z",
-      "caption": "EKS enables audit logs and restricts public API access to the configured CIDRs."
+      "start": 237.9,
+      "duration": 6.6,
+      "capture_started_at": "2026-10-14T18:35:25.391Z",
+      "caption": "EKS enables audit logs and restricts public API access to configured CIDRs."
     },
     {
       "scene": "aws-cluster",
       "chapter": "AWS \u00b7 13 OCTOBER",
-      "start": 244.867,
-      "duration": 5.166667,
+      "start": 244.5,
+      "duration": 5.033333,
       "capture_started_at": "2026-10-14T14:15:00.261Z",
       "caption": "The EKS cluster runs in Mumbai."
     },
     {
       "scene": "aws-workers",
       "chapter": "AWS \u00b7 13 OCTOBER",
-      "start": 250.033,
+      "start": 249.533,
       "duration": 5.133333,
       "capture_started_at": "2026-10-14T14:15:27.641Z",
       "caption": "The managed node group contains two worker nodes."
@@ -304,71 +344,79 @@
     {
       "scene": "metrics-endpoint",
       "chapter": "OBSERVABILITY",
-      "start": 255.167,
-      "duration": 6.133333,
-      "capture_started_at": "2026-10-14T18:12:34.005Z",
-      "caption": "The API exports request counters and response-time histograms in Prometheus format."
+      "start": 254.667,
+      "duration": 6.033333,
+      "capture_started_at": "2026-10-14T18:39:52.272Z",
+      "caption": "The API exports request counters and latency histograms in Prometheus format."
     },
     {
       "scene": "metrics",
       "chapter": "OBSERVABILITY",
-      "start": 261.3,
-      "duration": 6.633333,
-      "capture_started_at": "2026-10-14T18:11:03.890Z",
-      "caption": "The 60-second test completed 10,839 reads with zero failures; the HPA increased backend capacity."
+      "start": 260.7,
+      "duration": 6.566667,
+      "capture_started_at": "2026-10-14T18:41:07.108Z",
+      "caption": "The HPA increases backend capacity under load."
     },
     {
       "scene": "live-monitoring",
       "chapter": "OBSERVABILITY",
-      "start": 267.933,
-      "duration": 7.933333,
-      "capture_started_at": "2026-10-14T18:11:45.854Z",
-      "caption": "Grafana records the traffic increase, zero server errors and scaling from two replicas to five."
+      "start": 267.267,
+      "duration": 8.0,
+      "capture_started_at": "2026-10-14T18:42:17.755Z",
+      "caption": "Grafana records request rate, latency, zero server errors and scaling from two replicas to five."
     },
     {
       "scene": "prometheus",
       "chapter": "OBSERVABILITY",
-      "start": 275.867,
-      "duration": 6.466667,
-      "capture_started_at": "2026-10-14T18:11:39.117Z",
-      "caption": "Prometheus discovers the backend replicas and successfully scrapes their metrics."
+      "start": 275.267,
+      "duration": 6.433333,
+      "capture_started_at": "2026-10-14T18:42:26.147Z",
+      "caption": "Prometheus scrapes the application replicas successfully."
     },
     {
       "scene": "failure-start",
       "chapter": "TROUBLESHOOTING",
-      "start": 282.333,
-      "duration": 9.333333,
-      "capture_started_at": "2026-10-14T18:05:32.257Z",
-      "caption": "Start two isolated Kubernetes failures: an invalid image and an incorrect Service selector."
+      "start": 281.7,
+      "duration": 6.2,
+      "capture_started_at": "2026-10-14T18:39:40.898Z",
+      "caption": "Apply an invalid container image and a Service with an incorrect selector."
     },
     {
       "scene": "failure-diagnose",
       "chapter": "TROUBLESHOOTING",
-      "start": 291.667,
-      "duration": 8.466667,
-      "capture_started_at": "2026-10-14T18:05:57.884Z",
-      "caption": "ImagePullBackOff identifies the missing image; the Service selector matches no pods."
+      "start": 287.9,
+      "duration": 7.166667,
+      "capture_started_at": "2026-10-14T18:40:24.378Z",
+      "caption": "The invalid image enters ImagePullBackOff, and the mismatched Service has no endpoints."
     },
     {
       "scene": "failure-fix",
       "chapter": "TROUBLESHOOTING",
-      "start": 300.133,
-      "duration": 12.066667,
-      "capture_started_at": "2026-10-14T18:06:20.931Z",
-      "caption": "Correct the image tag and Service selector; the replacement pod becomes Ready and endpoints appear."
+      "start": 295.067,
+      "duration": 8.0,
+      "capture_started_at": "2026-10-14T18:40:38.889Z",
+      "caption": "Correct the image tag and the Service selector."
+    },
+    {
+      "scene": "failure-recovered",
+      "chapter": "TROUBLESHOOTING",
+      "start": 303.067,
+      "duration": 6.666667,
+      "capture_started_at": "2026-10-14T18:40:55.946Z",
+      "caption": "Both pods are Ready, and the repaired Service has a matching endpoint."
     },
     {
       "scene": "aws-records",
       "chapter": "AWS \u00b7 13 OCTOBER",
-      "start": 312.2,
-      "duration": 6.166667,
-      "capture_started_at": "2026-10-14T18:14:08.007Z",
-      "caption": "The AWS plan added 34 resources; the completed teardown removed all 34."
+      "start": 309.733,
+      "duration": 5.866667,
+      "capture_started_at": "2026-10-14T18:35:35.610Z",
+      "caption": "The saved AWS plan added 34 resources; the teardown removed all 34."
     },
     {
       "scene": "aws-cleanup",
       "chapter": "AWS \u00b7 13 OCTOBER",
-      "start": 318.367,
+      "start": 315.6,
       "duration": 7.966667,
       "capture_started_at": "2026-10-14T14:15:52.270Z",
       "caption": "The EKS cluster list is empty after Terraform destroys the environment."

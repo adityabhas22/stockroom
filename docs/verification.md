@@ -1,26 +1,26 @@
 # Verification
 
-## Recorded demonstration · 14 October
+## Recorded demonstration · 14–15 October
 
-Commit `8a57069ecae260527d8c8507904efa53239714fe` changed the results description to include the current inventory search. The recording follows the commit and push, [GitHub Actions run 38610398569](https://github.com/adityabhas22/stockroom/actions/runs/38610398569), image publication, and a manual Helm upgrade to revision 4 in the local kind cluster. The updated application displays the search description through the cluster ingress.
+Commit `99a0e2ca5b0b1beea3b142b3782ab439ac514ff1` added the matching-item count to the inventory search description. The recording follows the commit and push, [GitHub Actions run 38615525049](https://github.com/adityabhas22/stockroom/actions/runs/38615525049), image publication, and a manual Helm upgrade to revision 5 in the local kind cluster. The updated application displays `1 match for “Arduino”` through the cluster ingress. Browser assertions cover a single match and an empty result.
 
 | Check | Record |
 | --- | --- |
 | PostgreSQL API tests | [Native terminal capture](images/demo/pytest.png) |
 | Compose services healthy | [Native terminal capture](images/demo/compose-healthy.png) |
-| API create, read, update and archive | [Requests and responses](images/demo/api-crud.png) |
+| API create, read, update and archive | [Create](images/demo/api-create.png), [read](images/demo/api-read.png), [update](images/demo/api-crud.png), [archive](images/demo/api-delete.png) |
 | PostgreSQL inventory and movement tables | [Database query](images/demo/database.png) |
 | Successful CI run | [GitHub Actions](images/demo/ci-success.png) |
-| Trivy results for both published images | [Scan output](images/demo/scans.png) |
-| Helm revision 4 deployment | [Helm completion](images/demo/helm-complete.png), [updated application](images/demo/deployment-after.png) |
+| Trivy results for both published images | [Backend scan](images/demo/scans.png), [frontend scan](images/demo/scans-frontend.png) |
+| Helm revision 5 deployment | [Helm completion](images/demo/helm-complete.png), [release and deployed images](images/demo/helm-release.png), [updated application](images/demo/deployment-after.png) |
 | Running workloads, Services and Helm release | [Kubernetes output](images/demo/kubernetes.png) |
-| Published images and non-root runtime users | [Image tags and digests](images/demo/images.png) |
-| Prometheus-format application metrics | [Metrics output](images/demo/metrics.png) |
+| Published images and non-root runtime users | [Image tags](images/demo/images.png), [digests and runtime users](evidence/demo/images.txt) |
+| Prometheus-format application metrics | [Metrics endpoint](images/demo/metrics-endpoint.png) |
 | Application targets UP | [Prometheus, 5/5 targets](images/demo/prometheus.png) |
 | Live traffic and scaling from two replicas to five | [Grafana](images/demo/live-monitoring.png) |
-| Invalid image and Service selector diagnosis | [Failure state](images/demo/failure-diagnose.png), [recovery](images/demo/failure-fix.png) |
+| Invalid image and Service selector diagnosis | [Failure state](images/demo/failure-diagnose.png), [correction](images/demo/failure-fix.png), [recovery](images/demo/failure-recovered.png) |
 
-The local load test completed 10,839 successful reads with zero failures over 60 seconds. The Grafana capture shows application traffic and an increase from two backend replicas to five; Prometheus reports five healthy application targets.
+The 15 October local load test completed 9,218 successful reads with zero failures over 60 seconds using 12 workers. The Grafana capture shows application traffic and an increase from two backend replicas to five; Prometheus reports five healthy application targets.
 
 [CI run](evidence/demo/ci-run.json) · [API tests](evidence/demo/pytest.txt) · [Compose](evidence/demo/compose.txt) · [Database query](evidence/demo/database.txt) · [Image digests](evidence/demo/images.txt) · [Kubernetes](evidence/demo/kubernetes.txt) · [Metrics](evidence/demo/metrics.txt) · [Load](evidence/demo/load.json) · [Failure diagnosis](evidence/demo/failure-diagnose.txt) · [Recovery](evidence/demo/failure-fix.txt) · [Backend scan](evidence/demo/backend-scan.txt) · [Frontend scan](evidence/demo/frontend-scan.txt).
 

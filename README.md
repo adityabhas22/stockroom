@@ -148,7 +148,7 @@ All inventory APIs require a session cookie. Mutating requests also require `X-S
 
 ## Recorded deployment
 
-Commit `8a57069ecae260527d8c8507904efa53239714fe` made the results description reflect the current inventory search. [GitHub Actions run 38610398569](https://github.com/adityabhas22/stockroom/actions/runs/38610398569) passed and published both container images with that SHA. A manual Helm upgrade installed the images as revision 4 in the local kind cluster; the browser then showed the updated search description.
+Commit `99a0e2ca5b0b1beea3b142b3782ab439ac514ff1` added the matching-item count to the inventory search description. [GitHub Actions run 38615525049](https://github.com/adityabhas22/stockroom/actions/runs/38615525049) passed and published both container images with that SHA. A manual Helm upgrade installed the images as revision 5 in the local kind cluster; the browser then showed `1 match for “Arduino”` for the matching item.
 
 The [walkthrough](stockroom-walkthrough.mp4) follows the change from commit and push through CI, image publication and deployment, alongside API, database, monitoring and failure-recovery demonstrations. The earlier [AWS execution](docs/aws-run.md) used a temporary EKS cluster on 13 October.
 
